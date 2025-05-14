@@ -2,7 +2,7 @@ package com.example.codeanalysis.util
 
 
 inline fun catchException(
-    crossinline exceptionHandler: (Throwable) -> Unit = ::exceptionPrint,
+    crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
     noinline block: () -> Unit
 ): () -> Unit {
     return {
@@ -15,7 +15,7 @@ inline fun catchException(
 }
 
 inline fun <T> catchException(
-    crossinline exceptionHandler: (Throwable) -> Unit = ::exceptionPrint,
+    crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
     noinline block: (T) -> Unit
 ): (T) -> Unit {
     return { t ->
@@ -28,7 +28,7 @@ inline fun <T> catchException(
 }
 
 inline fun <T1, T2> catchException(
-    crossinline exceptionHandler: (Throwable) -> Unit = ::exceptionPrint,
+    crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
     noinline block: (T1, T2) -> Unit
 ): (T1, T2) -> Unit {
     return { t1, t2 ->
@@ -41,7 +41,7 @@ inline fun <T1, T2> catchException(
 }
 
 inline fun <T1, T2, T3> catchException(
-    crossinline exceptionHandler: (Throwable) -> Unit = ::exceptionPrint,
+    crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
     noinline block: (T1, T2, T3) -> Unit
 ): (T1, T2, T3) -> Unit {
     return { t1, t2, t3 ->
@@ -54,7 +54,7 @@ inline fun <T1, T2, T3> catchException(
 }
 
 inline fun <T1, T2, T3, T4> catchException(
-    crossinline exceptionHandler: (Throwable) -> Unit = ::exceptionPrint,
+    crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
     noinline block: (T1, T2, T3, T4) -> Unit
 ): (T1, T2, T3, T4) -> Unit {
     return { t1, t2, t3, t4 ->
@@ -67,7 +67,7 @@ inline fun <T1, T2, T3, T4> catchException(
 }
 
 inline fun <T1, T2, T3, T4, T5> catchException(
-    crossinline exceptionHandler: (Throwable) -> Unit = ::exceptionPrint,
+    crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
     noinline block: (T1, T2, T3, T4, T5) -> Unit
 ): (T1, T2, T3, T4, T5) -> Unit {
     return { t1, t2, t3, t4, t5 ->
@@ -80,7 +80,7 @@ inline fun <T1, T2, T3, T4, T5> catchException(
 }
 
 inline fun <T1, T2, T3, T4, T5, T6> catchException(
-    crossinline exceptionHandler: (Throwable) -> Unit = ::exceptionPrint,
+    crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
     noinline block: (T1, T2, T3, T4, T5, T6) -> Unit
 ): (T1, T2, T3, T4, T5, T6) -> Unit {
     return { t1, t2, t3, t4, t5, t6 ->
@@ -94,6 +94,6 @@ inline fun <T1, T2, T3, T4, T5, T6> catchException(
 
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun exceptionPrint(e: Throwable) {
+inline fun printException(e: Throwable) {
     e.printStackTrace()
 }

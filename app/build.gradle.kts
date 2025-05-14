@@ -64,6 +64,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(project(":util-debug"))
+    releaseImplementation(project(":util-release"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

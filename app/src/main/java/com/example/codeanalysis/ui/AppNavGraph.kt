@@ -40,10 +40,10 @@ fun AppNavGraph(
             navController = LocalNavController.current,
             startDestination = AppDestination.MAIN,
             enterTransition = { slideInHorizontally { it } },
-            // exitTransition = { ExitTransition.None },
-            exitTransition = { slideOutHorizontally { -it } },
-            // popEnterTransition = { EnterTransition.None },
-            popEnterTransition = { slideInHorizontally { -it } },
+            exitTransition = { ExitTransition.None },
+            // exitTransition = { slideOutHorizontally { -it } },
+            popEnterTransition = { EnterTransition.None },
+            // popEnterTransition = { slideInHorizontally { -it } },
             popExitTransition = { slideOutHorizontally { it } },
         ) {
             composable(AppDestination.MAIN) {

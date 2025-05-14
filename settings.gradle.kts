@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "code analysis"
 include(":app")
- 
+include(":util-debug")
+include(":util-release")

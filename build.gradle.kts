@@ -2,18 +2,26 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.compose) apply false
 }
 
 
 allprojects {
     configurations.all {
-        resolutionStrategy.eachDependency {
+        resolutionStrategy {
             force(libs.kotlin.stdlib)
             force(libs.kotlin.stdlib.jdk7)
             force(libs.kotlin.stdlib.jdk8)
             force(libs.kotlinx.coroutines.core)
+            force(libs.androidx.lifecycle.common)
+            force(libs.androidx.lifecycle.runtime)
+            force(libs.androidx.lifecycle.runtime.ktx)
+            force(libs.androidx.lifecycle.runtime.compose)
+            force(libs.androidx.lifecycle.viewmodel)
+            force(libs.androidx.lifecycle.viewmodel.ktx)
+            force(libs.androidx.lifecycle.viewmodel.compose)
+            force(libs.androidx.lifecycle.viewmodel.savedstate)
         }
     }
 }

@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.codeanalysis.util"
+    namespace = "com.example.thinking.util"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

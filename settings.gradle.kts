@@ -29,7 +29,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "code analysis"
+rootProject.name = "android_thinking"
 include(":app")
 include(":util-debug")
 include(":util-release")

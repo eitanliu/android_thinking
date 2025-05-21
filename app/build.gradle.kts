@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.codeanalysis"
+    namespace = "com.example.thinking"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.example.codeanalysis"
+        applicationId = "com.example.thinking"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

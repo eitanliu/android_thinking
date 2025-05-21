@@ -1,4 +1,4 @@
-package com.example.codeanalysis.ui
+package com.example.thinking.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize

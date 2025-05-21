@@ -1,4 +1,4 @@
-package com.example.codeanalysis
+package com.example.thinking
 
 import org.junit.Test
 

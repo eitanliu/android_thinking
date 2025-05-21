@@ -1,4 +1,4 @@
-package com.example.codeanalysis.ui
+package com.example.thinking.ui
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition

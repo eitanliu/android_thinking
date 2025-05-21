@@ -1,4 +1,4 @@
-package com.example.codeanalysis.util
+package com.example.thinking.util
 
 
 inline fun catchException(

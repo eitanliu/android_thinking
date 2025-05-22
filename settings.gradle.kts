@@ -31,5 +31,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "android_thinking"
 include(":app")
+include(":libkn")
+include(":libkn-api")
 include(":util-debug")
 include(":util-release")

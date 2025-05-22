@@ -2,6 +2,9 @@
     org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class,
 )
 
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -33,6 +36,30 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+}
+
+kotlin {
+    sourceSets.all {
+        languageSettings.apply {
+            optIn("androidx.compose.material3.ExperimentalMaterial3Api")
+            optIn("kotlin.ExperimentalStdlibApi")
+            optIn("kotlin.experimental.ExperimentalNativeApi")
+            optIn("kotlin.native.runtime.NativeRuntimeApi")
+            optIn("kotlin.time.ExperimentalTime")
+            // 2.1.2
+            optIn("kotlin.concurrent.atomics.ExperimentalAtomicApi")
+            optIn("kotlin.uuid.ExperimentalUuidApi")
+
+            optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            optIn("kotlinx.coroutines.DelicateCoroutinesApi")
+            optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
+        }
+    }
+
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_11
+        freeCompilerArgs.add("-Xwhen-guards")
     }
 }
 

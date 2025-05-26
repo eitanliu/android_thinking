@@ -23,6 +23,7 @@ compose-bom = "2025.05.00"
 compose-hot-reload = "1.0.0-alpha09"
 compose-multiplatform = "1.8.1"
 compose-navigation = "2.9.0-alpha17"
+desugar_jdk_libs = "2.1.5"
 junit = "4.13.2"
 kotlin = "2.1.21"
 kotlinx-coroutines = "1.10.2"
@@ -42,6 +43,7 @@ kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version
 junit = { module = "junit:junit", version.ref = "junit" }
 
 # Android
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-activity = { module = "androidx.activity:activity", version.ref = "androidx-activity" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }

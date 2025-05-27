@@ -86,6 +86,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.tooling.preview)
+
+    implementation(libs.gson)
+
     debugImplementation(project(":util-debug"))
     releaseImplementation(project(":util-release"))
 

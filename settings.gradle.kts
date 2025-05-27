@@ -21,7 +21,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven {
             url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev/")
-            mavenContent {
+            content {
                 includeGroupAndSubgroups("androidx")
                 includeGroupAndSubgroups("org.jetbrains")
             }

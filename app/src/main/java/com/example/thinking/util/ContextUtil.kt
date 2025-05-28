@@ -20,9 +20,15 @@ fun Context.baseIf(predicate: (context: Context) -> Boolean): Context? {
 }
 
 inline fun <reified T : Activity> Context.startActivity() {
-    startActivity(Intent(this, T::class.java))
+    startActivity(intent<T>())
 }
 
-inline fun <reified T : Activity> Context.startActivity(noinline action: Intent.() -> Unit) {
-    startActivity(Intent(this, T::class.java).apply(action))
+inline fun <reified T : Activity> Context.startActivity(
+    noinline action: Intent.() -> Unit
+) {
+    startActivity(intent<T>().apply(action))
+}
+
+inline fun <reified T : Activity> Context.intent(): Intent {
+    return Intent(this, T::class.java)
 }

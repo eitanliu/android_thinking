@@ -76,18 +76,52 @@ kotlin {
 dependencies {
 
     coreLibraryDesugaring(libs.desugar.jdk.libs)
-    implementation(libs.androidx.core.ktx)
+    // android
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout)
+
+    // ktx
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.collection.ktx)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.dynamicanimation.ktx)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.livedata.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.paging.common.ktx)
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.palette.ktx)
+    implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.play.core.ktx)
+
+    // compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
     implementation(libs.material)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.tooling.preview)
 
+    // google
     implementation(libs.gson)
+    implementation(libs.play.services.base)
+    implementation(libs.play.services.basement)
+    implementation(libs.play.services.location)
+    implementation(libs.play.services.tasks)
+    implementation(libs.play.services.auth)
+    implementation(libs.play.services.ads)
+    implementation(libs.play.review)
+    implementation(libs.play.review.ktx)
+    implementation(libs.google.ump)
+    implementation(libs.mlkit.barcode.scanning)
+    implementation(libs.mlkit.document.scanner)
+    implementation(libs.billing)
 
     debugImplementation(project(":util-debug"))
     releaseImplementation(project(":util-release"))

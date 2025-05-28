@@ -35,9 +35,25 @@ kotlin = "2.1.21"
 kotlinx-coroutines = "1.10.2"
 navigation = "2.9.0"
 material = "1.12.0"
-google-play = "1.8.1"
+
+### google
+play-core = "1.8.1"
+play-review = "2.0.2"
+gms-base = "18.7.0"
+gms-location = "21.3.0"
+gms-tasks = "18.3.0"
+gms-auth = "21.3.0"
+gms-ads = "24.3.0"
+gms-ads-identifier = "18.2.0"
+ump = "3.2.0"
+mlkit-barcode-scanning = "17.3.0"
+mlkit-document-scanner = "16.0.0-beta1"
+
+firebase = "33.14.0"
+billing = "7.1.1"
 
 okio = "3.11.0"
+
 gson = "2.11.0"
 
 [libraries]
@@ -59,6 +75,7 @@ androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-dynamicanimation = { module = "androidx.dynamicanimation:dynamicanimation", version.ref = "androidx-dynamicanimation" }
 androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-livedata-core = { module = "androidx.lifecycle:lifecycle-livedata-core", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-livedata-core-ktx = { module = "androidx.lifecycle:lifecycle-livedata-core-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "androidx-lifecycle" }
@@ -85,7 +102,7 @@ androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", v
 androidx-palette-ktx = { module = "androidx.palette:palette-ktx", version.ref = "androidx-palette" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "androidx-preference" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-work" }
-google-play-core-ktx = { module = "com.google.android.play:core-ktx", version.ref = "google-play" }
+play-core-ktx = { module = "com.google.android.play:core-ktx", version.ref = "play-core" }
 
 # Multiplatform https://developer.android.com/kotlin/multiplatform
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
@@ -102,7 +119,6 @@ androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmode
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
-androidx-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
@@ -121,7 +137,7 @@ androidx-savedstate-ktx = { module = "androidx.savedstate:savedstate-ktx", versi
 androidx-sqlite = { module = "androidx.sqlite:sqlite", version.ref = "androidx-sqlite" }
 androidx-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "androidx-sqlite" }
 androidx-sqlite-framework = { module = "androidx.sqlite:sqlite-framework", version.ref = "androidx-sqlite" }
-okio  = { module = "com.squareup.okio:okio", version.ref = "okio" }
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 
 # Compose
 # https://developer.android.com/develop/ui/compose/bom/bom-mapping
@@ -142,6 +158,36 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-coroutines-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+
+### google
+# playcore
+# https://developer.android.com/guide/playcore
+# https://developer.android.com/reference/com/google/android/play/core/release-notes
+play-review = { module = "com.google.android.play:review", version.ref = "play-review" }
+play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "play-review" }
+# billing https://developer.android.com/google/play/billing/release-notes
+billing = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
+# gms https://developers.google.com/android/guides/setup
+play-services-base = { module = "com.google.android.gms:play-services-base", version.ref = "gms-base" }
+play-services-basement = { module = "com.google.android.gms:play-services-basement", version.ref = "gms-base" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "gms-location" }
+play-services-tasks = { module = "com.google.android.gms:play-services-tasks", version.ref = "gms-tasks" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "gms-auth" }
+play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "gms-ads" }
+play-services-ads-identifier = { module = "com.google.android.gms:play-services-ads-identifier", version.ref = "gms-ads-identifier" }
+# admob privacy https://developers.google.com/admob/android/privacy
+google-ump = { module = "com.google.android.ump:user-messaging-platform", version.ref = "ump" }
+# ml-kit https://developers.google.com/ml-kit/release-notes
+mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "mlkit-barcode-scanning" }
+mlkit-document-scanner = { module = "com.google.android.gms:play-services-mlkit-document-scanner", version.ref = "mlkit-document-scanner" }
+
+# firebase https://firebase.google.com/support/release-notes/android
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
+firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebase" }
+firebase-config-ktx = { module = "com.google.firebase:firebase-config-ktx", version.ref = "firebase" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebase" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebase" }
+firebase-perf = { module = "com.google.firebase:firebase-perf", version.ref = "firebase" }
 
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 

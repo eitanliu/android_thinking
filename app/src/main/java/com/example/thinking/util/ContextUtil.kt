@@ -10,11 +10,17 @@ fun Context.contextTree(tree: (context: Context) -> Unit) {
     if (this is ContextWrapper) baseContext.contextTree(tree)
 }
 
-fun Context.baseIf(predicate: (context: Context) -> Boolean): Context? {
-    if (predicate(this)) {
-        return this
-    } else if (this is ContextWrapper) {
-        baseContext.baseIf(predicate)
+fun Context.contextIf(predicate: (context: Context) -> Boolean): Context? {
+    var current: Context? = this
+    while (current != null) {
+        if (predicate(current)) {
+            return current
+        } else if (current is ContextWrapper) {
+            val base = current.baseContext
+            current = base
+        } else {
+            current = null
+        }
     }
     return null
 }

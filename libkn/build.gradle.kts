@@ -45,8 +45,18 @@ kotlin {
 
         all {
             languageSettings.apply {
+                optIn("androidx.compose.material3.ExperimentalMaterial3Api")
+                optIn("kotlin.ExperimentalStdlibApi")
                 optIn("kotlin.experimental.ExperimentalNativeApi")
+                optIn("kotlin.native.runtime.NativeRuntimeApi")
+                optIn("kotlin.time.ExperimentalTime")
+                // 2.1.2
+                optIn("kotlin.concurrent.atomics.ExperimentalAtomicApi")
+                optIn("kotlin.uuid.ExperimentalUuidApi")
+
                 optIn("kotlinx.cinterop.ExperimentalForeignApi")
+                optIn("kotlinx.coroutines.DelicateCoroutinesApi")
+                optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
             }
         }
     }

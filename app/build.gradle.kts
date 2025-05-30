@@ -13,6 +13,9 @@ plugins {
 
 android {
     namespace = "com.example.thinking"
+
+    // buildToolsVersion = "34.0.0"
+    // ndkVersion = "22.1.7171670"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -40,12 +43,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    viewBinding {
-        enable = true
-    }
+    viewBinding.enable = true
+    dataBinding.enable = true
 
-    dataBinding {
-        enable = true
+    dependenciesInfo {
+        includeInApk = true
+        includeInBundle = true
     }
 }
 
@@ -99,7 +102,6 @@ dependencies {
     implementation(libs.androidx.palette.ktx)
     implementation(libs.androidx.preference.ktx)
     implementation(libs.androidx.work.runtime.ktx)
-    implementation(libs.play.core.ktx)
 
     // compose
     implementation(platform(libs.androidx.compose.bom))
@@ -110,18 +112,24 @@ dependencies {
 
     // google
     implementation(libs.gson)
+    // implementation(libs.play.core.ktx)
+    implementation(libs.play.asset.ktx)
+    implementation(libs.play.feature.ktx)
+    implementation(libs.play.review.ktx)
+    implementation(libs.play.update.ktx)
     implementation(libs.play.services.base)
     implementation(libs.play.services.basement)
     implementation(libs.play.services.location)
     implementation(libs.play.services.tasks)
     implementation(libs.play.services.auth)
     implementation(libs.play.services.ads)
-    implementation(libs.play.review)
-    implementation(libs.play.review.ktx)
     implementation(libs.google.ump)
     implementation(libs.mlkit.barcode.scanning)
     implementation(libs.mlkit.document.scanner)
-    implementation(libs.billing)
+    implementation(libs.billing.ktx)
+
+    implementation(platform(libs.kotlinx.coroutines.bom))
+    implementation(libs.kotlinx.coroutines.play)
 
     debugImplementation(project(":util-debug"))
     releaseImplementation(project(":util-release"))

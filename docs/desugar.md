@@ -1,12 +1,16 @@
 # desugaring
 
-[Java versions in Android builds](https://developer.android.com/build/jdks)  
-[Android Releases](https://developer.android.com/about/versions)  
+[Which Java APIs can I use in my Java or Kotlin source code?](https://developer.android.com/build/jdks#compileSdk)  
+[android-14 Java 17 Core libraries](https://developer.android.com/about/versions/14/features#core-libraries)  
+[android-13 Java 11 Core libraries](https://developer.android.com/about/versions/13/features#core-libraries)  
+[android-12 Java 11 APIs](https://developer.android.com/about/versions/12/features#java-api)  
+[android-8 Java 8 APIs](https://developer.android.com/about/versions/oreo/android-8.0#art)  
 
-[Java 8+ API desugaring support](https://developer.android.com/studio/write/java8-support#library-desugaring)
-可使用的 Java API [JDK compileSdk](https://developer.android.com/build/jdks#compileSdk) `脱糖` [desugaring](https://developer.android.com/studio/write/java8-support)  
-8 (API 26) 以下通过脱糖获得 Java 8 及更高版本 API [Java 8+ APIs available through desugaring](https://developer.android.com/studio/write/java8-support-table)  
-13 (API 33) 以下通过脱糖提供的 Java 11 及更高版本 API [Java 11+ APIs available through desugaring](https://developer.android.com/studio/write/java11-default-support-table)
+可使用的 Java API `脱糖` [Java 8+ API desugaring support](https://developer.android.com/studio/write/java8-support#library-desugaring)  
+Android 8 (API 26) 以下通过脱糖获得 Java 8 及更高版本 API [Java 8+ APIs available through desugaring](https://developer.android.com/studio/write/java8-support-table)  
+Android 13 (API 33) 以下通过脱糖提供的 Java 11 及更高版本 API [Java 11+ APIs available through desugaring](https://developer.android.com/studio/write/java11-default-support-table)  
+[Java 11+ APIs available through desugaring with the minimal specification](https://developer.android.com/studio/write/java11-minimal-support-table)  
+[Java 11+ APIs available through desugaring with the nio specification](https://developer.android.com/studio/write/java11-nio-support-table)  
 
 ```kotlin
 
@@ -21,5 +25,7 @@ android {
 dependencies {
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs_nio:2.1.5")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs_minimal:2.1.5")
 }
 ```

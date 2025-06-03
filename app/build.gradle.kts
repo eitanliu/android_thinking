@@ -101,6 +101,7 @@ dependencies {
     implementation(libs.androidx.paging.runtime.ktx)
     implementation(libs.androidx.palette.ktx)
     implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.startup.runtime)
     implementation(libs.androidx.work.runtime.ktx)
 
     // compose

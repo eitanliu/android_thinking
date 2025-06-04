@@ -132,6 +132,8 @@ dependencies {
     implementation(platform(libs.kotlinx.coroutines.bom))
     implementation(libs.kotlinx.coroutines.play)
 
+    implementation("com.github.eitanliu.cleaner:android:main-SNAPSHOT")
+
     debugImplementation(project(":util-debug"))
     releaseImplementation(project(":util-release"))
 

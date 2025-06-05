@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- For apps targeting Android 13 or higher & GMA SDK version 20.3.0 or lower -->
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
@@ -16,12 +15,16 @@
         android:theme="@style/Theme.CodeAnalysis"
         tools:targetApi="31">
 
+        <activity
+            android:name=".document.DocumentScannerActivity"
+            android:exported="false" />
+
         <!-- https://stackoverflow.com/questions/52786963/unable-to-get-provider-com-google-android-gms-ads-mobileadsinitprovider-java-la -->
         <!-- https://developers.google.com/admob/android/quick-start#import_the_mobile_ads_sdk -->
         <!-- https://developers.google.com/admob/android/test-ads -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"

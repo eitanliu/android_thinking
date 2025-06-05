@@ -26,9 +26,15 @@
 
 ### Save to shared storage
 
-[Access media files from shared storage](https://developer.android.google.cn/training/data-storage/shared/media)  
+[Access media files from shared storage](https://developer.android.com/training/data-storage/shared/media)  
 [Open files using the Storage Access Framework (SAF)](https://developer.android.com/guide/topics/providers/document-provider)  
 [storage-samples](https://github.com/android/storage-samples)  
+
+### Sharing
+
+[Sharing data](https://developer.android.com/training/sharing)  
+[Sharing files](https://developer.android.com/training/secure-file-sharing)  
+
 
 ### App compatibility
 

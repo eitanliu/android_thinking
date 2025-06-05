@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -49,6 +50,10 @@ android {
     dependenciesInfo {
         includeInApk = true
         includeInBundle = true
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -132,7 +137,7 @@ dependencies {
     implementation(platform(libs.kotlinx.coroutines.bom))
     implementation(libs.kotlinx.coroutines.play)
 
-    implementation("com.github.eitanliu.cleaner:android:main-SNAPSHOT")
+    implementation(libs.eitanliu.cleaner.android)
 
     debugImplementation(project(":util-debug"))
     releaseImplementation(project(":util-release"))

@@ -1,5 +1,6 @@
 package com.example.thinking.ui
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,14 +18,19 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.thinking.MainActivity
+import com.example.thinking.document.DocumentScannerActivity
 import com.example.thinking.util.catchException
+import com.example.thinking.util.startActivity
 
 @Composable
 fun MainScreen(
-    navController: NavHostController = LocalNavController.current
+    navController: NavHostController = LocalNavController.current,
+    context: Context = LocalContext.current
 ) {
     AppScaffold(
         title = { Text("Main Screen") },
@@ -47,6 +53,11 @@ fun MainScreen(
                 navController.navigate(AppDestination.SPEECH)
             }) {
                 Text("Go to Speech")
+            }
+            Button(onClick = catchException {
+                context.startActivity<DocumentScannerActivity>()
+            }) {
+                Text("Document Scanner")
             }
             Box(
                 modifier = Modifier

@@ -61,7 +61,7 @@ billing = "7.1.1"
 
 gson = "2.11.0"
 okio = "3.11.0"
-eitanliu-cleaner = "main-SNAPSHOT"
+eitanliu-cleaner = "1.0.0"
 
 [libraries]
 # Testing

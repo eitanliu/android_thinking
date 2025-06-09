@@ -26,9 +26,11 @@ dependencyResolutionManagement {
                 includeGroupAndSubgroups("org.jetbrains")
             }
         }
-        repositories {
-            mavenCentral()
-            maven { url = uri("https://jitpack.io") }
+        maven {
+            url = uri("https://jitpack.io")
+            content {
+                includeGroupAndSubgroups("com.github")
+            }
         }
     }
 }

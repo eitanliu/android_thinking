@@ -10,7 +10,7 @@
 Android 8 (API 26) 以下通过脱糖获得 Java 8 及更高版本 API [Java 8+ APIs available through desugaring](https://developer.android.com/studio/write/java8-support-table)  
 Android 13 (API 33) 以下通过脱糖提供的 Java 11 及更高版本 API [Java 11+ APIs available through desugaring](https://developer.android.com/studio/write/java11-default-support-table)  
 [Java 11+ APIs available through desugaring with the minimal specification](https://developer.android.com/studio/write/java11-minimal-support-table)  
-[Java 11+ APIs available through desugaring with the nio specification](https://developer.android.com/studio/write/java11-nio-support-table)  
+[Java 11+ APIs available through desugaring with the nio specification](https://developer.android.com/studio/write/java11-nio-support-table)
 
 ```kotlin
 
@@ -26,6 +26,18 @@ dependencies {
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs_nio:2.1.5")
+    // miniVersion Android 8 (API 26) 使用
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs_minimal:2.1.5")
 }
 ```
+
+### API 24
+
+[java.util.stream](https://developer.android.com/reference/java/util/stream/package-summary)  
+
+### API 26
+
+[java.time](https://developer.android.com/reference/java/time/package-summary)  
+[java.nio.file](https://developer.android.com/reference/java/nio/file/package-summary)  
+[java.lang.invoke](https://developer.android.com/reference/java/lang/invoke/package-summary)  
+

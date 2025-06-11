@@ -52,6 +52,8 @@ android {
         includeInBundle = true
     }
     buildFeatures {
+        buildConfig = true
+        resValues = true
         viewBinding = true
         dataBinding = true
     }

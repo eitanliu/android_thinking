@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 主题继承顺序 -->
+    <style name="Example.Theme.1" parent="Theme.Material3.DayNight" />
+    <style name="Example.Theme.11" parent="Theme.Material3.Light" />
+    <style name="Example.Theme.111" parent="Base.Theme.Material3.Light" />
+    <style name="Example.Theme.1111" parent="Base.V14.Theme.Material3.Light" />
+    <style name="Example.Theme.11111" parent="Theme.MaterialComponents.Light" />
+    <style name="Example.Theme.111111" parent="Base.Theme.MaterialComponents.Light" />
+    <style name="Example.Theme.1111111" parent="Base.V14.Theme.MaterialComponents.Light" />
+    <style name="Example.Theme.11111111" parent="Base.V14.Theme.MaterialComponents.Light.Bridge" />
+    <style name="Example.Theme.111111111" parent="Platform.MaterialComponents.Light" />
+    <style name="Example.Theme.1111111111" parent="Theme.AppCompat.Light" />
+    <style name="Example.Theme.11111111111" parent="Base.Theme.AppCompat.Light" />
+    <style name="Example.Theme.111111111111" parent="Base.V7.Theme.AppCompat.Light" />
+    <style name="Example.Theme.1111111111111" parent="Platform.AppCompat.Light" />
+    <style name="Example.Theme.11111111111111" parent="android:Theme.Holo.Light" />
+    <style name="Example.Theme.11111111111112" parent="Platform.V21.AppCompat.Light" />
+    <style name="Example.Theme.111111111111121" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Example.Theme.11111111111113" parent="Platform.V25.AppCompat.Light" />
+    <style name="Example.Theme.111111111111131" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Example.Theme.111111111112" parent="Base.V21.Theme.AppCompat.Light" />
+    <style name="Example.Theme.111111111113" parent="Base.V22.Theme.AppCompat.Light" />
+    <style name="Example.Theme.111111111114" parent="Base.V23.Theme.AppCompat.Light" />
+    <style name="Example.Theme.111111111115" parent="Base.V26.Theme.AppCompat.Light" />
+    <style name="Example.Theme.111111111116" parent="Base.V28.Theme.AppCompat.Light" />
+    <style name="Example.Theme.1111112" parent="Base.V21.Theme.MaterialComponents.Light" />
+    <style name="Example.Theme.1112" parent="Base.V24.Theme.Material3.Light" />
+
+    <style name="Example.Theme.12" parent="Theme.Material3.Dark" />
+
+</resources>

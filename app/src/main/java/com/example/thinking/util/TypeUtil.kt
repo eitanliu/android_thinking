@@ -10,9 +10,9 @@ inline fun <reified T> Any.asType() = this as T
 
 inline fun <reified T> Any?.asTypeOrNull() = this as? T
 
-inline fun <reified T> getTAG(): String = T::class.java.simpleName
+inline fun <reified T> getTAG(): String = T::class.java.TAG
 
-inline val <T : Any> T.TAG: String get() = this::class.java.simpleName
+inline val <T : Any> T.TAG: String get() = this::class.java.TAG
 
 inline val Class<*>.TAG: String get() = this.simpleName
 

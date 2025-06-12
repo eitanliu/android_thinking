@@ -3,7 +3,7 @@
 package com.example.thinking.util
 
 
-inline fun hashCodeArray(vararg array: Any?, initial: Int = 0): Int {
+inline fun hashCodeArray(vararg array: Any?, initial: Int = 1): Int {
     return array.fold(initial) { acc, obj ->
         31 * acc + obj.hashCode()
     }

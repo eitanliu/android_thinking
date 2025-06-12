@@ -60,4 +60,13 @@ kotlin {
             }
         }
     }
+
+    compilerOptions {
+        // jvmTarget = JvmTarget.fromTarget(libs.versions.jvm.get())
+        freeCompilerArgs.addAll(
+            "-Xwhen-guards",
+            "-Xnon-local-break-continue",
+            "-Xmulti-dollar-interpolation"
+        )
+    }
 }

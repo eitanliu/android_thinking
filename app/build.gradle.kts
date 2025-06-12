@@ -40,8 +40,8 @@ android {
     }
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
     }
 
     viewBinding.enable = true
@@ -78,8 +78,12 @@ kotlin {
     }
 
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_11
-        freeCompilerArgs.add("-Xwhen-guards")
+        jvmTarget = JvmTarget.fromTarget(libs.versions.jvm.get())
+        freeCompilerArgs.addAll(
+            "-Xwhen-guards",
+            "-Xnon-local-break-continue",
+            "-Xmulti-dollar-interpolation"
+        )
     }
 }
 

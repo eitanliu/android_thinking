@@ -24,3 +24,10 @@
 -keepclassmembers class androidx.lifecycle.LiveData {
     *;
 }
+-keep class androidx.lifecycle.LiveData$ObserverWrapper
+-keepclassmembers class androidx.lifecycle.LiveData$ObserverWrapper {
+    *;
+}
+-keepclassmembers class androidx.fragment.app.FragmentViewLifecycleOwner {
+    private androidx.fragment.app.Fragment mFragment;
+}

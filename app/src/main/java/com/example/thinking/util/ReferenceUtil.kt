@@ -1,4 +1,4 @@
-package com.eitanliu.utils
+package com.example.thinking.util
 
 import java.lang.ref.SoftReference
 import java.lang.ref.WeakReference

@@ -132,8 +132,8 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
     implementation(libs.material)
-    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.navigation.compose)
 
     // google
     implementation(libs.gson)
@@ -153,6 +153,8 @@ dependencies {
     implementation(libs.mlkit.document.scanner)
     implementation(libs.billing.ktx)
 
+    implementation(libs.kotlin.reflect)
+    implementation(libs.kotlinx.metadata)
     implementation(platform(libs.kotlinx.coroutines.bom))
     implementation(libs.kotlinx.coroutines.play)
 

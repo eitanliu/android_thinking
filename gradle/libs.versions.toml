@@ -21,17 +21,17 @@ androidx-navigation = "2.9.0"
 androidx-paging = "3.3.6"
 androidx-palette = "1.0.0"
 androidx-preference = "1.2.1"
-androidx-room = "2.7.1"
+androidx-room = "2.7.2"
 androidx-savedstate = "1.3.0"
-androidx-sqlite = "2.5.1"
+androidx-sqlite = "2.5.2"
 androidx-startup = "1.2.0"
-androidx-work = "2.10.1"
+androidx-work = "2.10.2"
 androidx-test-ext = "1.2.1"
 androidx-concurrent-futures = "1.2.0"
 compose-bom = "2025.06.00"
 compose-hot-reload = "1.0.0-alpha09"
-compose-multiplatform = "1.8.1"
-compose-navigation = "2.9.0-alpha17"
+compose-multiplatform = "1.8.2"
+compose-navigation = "2.9.0-beta03"
 desugar_jdk_libs = "2.1.5"
 junit = "4.13.2"
 kotlin = "2.1.21"
@@ -39,7 +39,6 @@ kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.8.1"
 kotlinx-io = "0.7.0"
 kotlinx-datetime = "0.6.2"
-navigation = "2.9.0"
 material = "1.12.0"
 
 ### google
@@ -57,10 +56,10 @@ gms-ads-identifier = "18.2.0"
 ump = "3.2.0"
 mlkit-barcode-scanning = "17.3.0"
 mlkit-document-scanner = "16.0.0-beta1"
-firebase = "33.15.0"
-billing = "7.1.1"
+firebase = "33.16.0"
+billing = "8.0.0"
 
-gson = "2.11.0"
+gson = "2.13.1"
 okio = "3.11.0"
 eitanliu-cleaner = "1.0.2"
 
@@ -157,20 +156,24 @@ androidx-sqlite-framework = { module = "androidx.sqlite:sqlite-framework", versi
 # https://developer.android.com/develop/ui/compose/bom/bom-mapping
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
 
 # Kotlin
 # https://klibs.io/organization/Kotlin
 # https://klibs.io/organization/JetBrains
 # https://kotlinlang.org/api/core/
+# https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "kotlin" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 # https://kotlinlang.org/api/kotlinx-metadata-jvm/
+kotlinx-metadata = { module = "org.jetbrains.kotlin:kotlin-metadata-jvm", version.ref = "kotlin" }
+# https://kotlinlang.org/api/kotlinx.coroutines/
 kotlinx-coroutines-bom = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-bom", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinx-coroutines" }
@@ -245,6 +248,9 @@ okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 ### Other
 eitanliu-cleaner-android = { module = "com.github.eitanliu.cleaner:android", version.ref = "eitanliu-cleaner" }
 eitanliu-cleaner-compat = { module = "com.github.eitanliu.cleaner:compat", version.ref = "eitanliu-cleaner" }
+# https://github.com/ChuckerTeam/chucker
+# https://github.com/square/leakcanary
+# https://github.com/amitshekhariitbhu/Android-Debug-Database
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

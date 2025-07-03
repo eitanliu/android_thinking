@@ -15,6 +15,8 @@ allprojects {
             force(libs.kotlin.stdlib)
             force(libs.kotlin.stdlib.jdk7)
             force(libs.kotlin.stdlib.jdk8)
+            force(libs.kotlin.reflect)
+            force(libs.kotlinx.metadata)
             force(libs.kotlinx.coroutines.core)
             force(libs.androidx.lifecycle.common)
             force(libs.androidx.lifecycle.runtime)

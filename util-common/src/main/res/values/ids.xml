@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="bindingTags" type="id" />
+    <item name="viewModel" type="id" />
+    <item name="viewLayoutId" type="id" />
+    <item name="rootWindow" type="id" />
+    <item name="rootWindowInsetsCompat" type="id" />
+    <item name="viewWindowInsetsCompat" type="id" />
+    <item name="cacheWindowInsetsCompat" type="id" />
+    <item name="windowInsetsController" type="id" />
+    <item name="softwareKeyboardController" type="id" />
+</resources>

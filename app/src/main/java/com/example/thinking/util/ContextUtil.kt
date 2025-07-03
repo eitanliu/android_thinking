@@ -10,6 +10,10 @@ fun Context.contextTree(tree: (context: Context) -> Unit) {
     if (this is ContextWrapper) baseContext.contextTree(tree)
 }
 
+inline fun <reified T> Context.typeIf(): T? {
+    return contextIf { it is T } as? T
+}
+
 fun Context.contextIf(predicate: (context: Context) -> Boolean): Context? {
     var current: Context? = this
     while (current != null) {

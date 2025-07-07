@@ -1,5 +1,7 @@
 package com.example.thinking.util
 
+import com.example.thinking.BuildConfig
+
 
 inline fun catchException(
     crossinline exceptionHandler: (Throwable) -> Unit = ::printException,
@@ -95,5 +97,5 @@ inline fun <T1, T2, T3, T4, T5, T6> catchException(
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun printException(e: Throwable) {
-    e.printStackTrace()
+    if (BuildConfig.DEBUG) Logcat.msg(e, level = Logcat.E)
 }

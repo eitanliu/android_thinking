@@ -4,8 +4,6 @@
 [Java versions in Android builds](https://developer.android.com/build/jdks)  
 [Build.VERSION_CODES](https://developer.android.com/reference/android/os/Build.VERSION_CODES)  
 
-[Restrictions on non-SDK interfaces](https://developer.android.com/guide/app-compatibility/restrictions-non-sdk-interfaces)  
-
 ### Android 16
 
 [Xiaomi Android 16 应用适配指南](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2035)  

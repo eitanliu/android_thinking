@@ -157,6 +157,9 @@ dependencies {
     implementation(libs.kotlinx.metadata)
     implementation(platform(libs.kotlinx.coroutines.bom))
     implementation(libs.kotlinx.coroutines.play)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.io.core)
+    implementation(libs.kotlinx.datetime)
 
     implementation(libs.eitanliu.cleaner.android)
 

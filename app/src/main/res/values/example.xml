@@ -29,5 +29,29 @@
     <style name="Example.Theme.1112" parent="Base.V24.Theme.Material3.Light" />
 
     <style name="Example.Theme.12" parent="Theme.Material3.Dark" />
+    <style name="Example.Theme.121" parent="Base.Theme.Material3.Dark" />
+    <style name="Example.Theme.1211" parent="Base.V14.Theme.Material3.Dark" />
+    <style name="Example.Theme.12111" parent="Theme.MaterialComponents" />
+    <style name="Example.Theme.121111" parent="Base.Theme.MaterialComponents" />
+    <style name="Example.Theme.1211111" parent="Base.V14.Theme.MaterialComponents" />
+    <style name="Example.Theme.12111111" parent="Base.V14.Theme.MaterialComponents.Bridge" />
+    <style name="Example.Theme.121111111" parent="Platform.MaterialComponents" />
+    <style name="Example.Theme.1211111111" parent="Theme.AppCompat" />
+    <style name="Example.Theme.12111111111" parent="Base.Theme.AppCompat" />
+    <style name="Example.Theme.121111111111" parent="Base.V7.Theme.AppCompat" />
+    <style name="Example.Theme.1211111111111" parent="Platform.AppCompat" />
+    <style name="Example.Theme.12111111111111" parent="android:Theme.Holo" />
+    <style name="Example.Theme.12111111111112" parent="Platform.V21.AppCompat" />
+    <style name="Example.Theme.121111111111121" parent="android:Theme.Material.NoActionBar" />
+    <style name="Example.Theme.12111111111113" parent="Platform.V25.AppCompat" />
+    <style name="Example.Theme.121111111111131" parent="android:Theme.Material.NoActionBar" />
+    <style name="Example.Theme.121111111112" parent="Base.V21.Theme.AppCompat" />
+    <style name="Example.Theme.121111111113" parent="Base.V22.Theme.AppCompat" />
+    <style name="Example.Theme.121111111114" parent="Base.V23.Theme.AppCompat" />
+    <style name="Example.Theme.121111111115" parent="Base.V26.Theme.AppCompat" />
+    <style name="Example.Theme.121111111116" parent="Base.V28.Theme.AppCompat" />
+    <style name="Example.Theme.1211112" parent="Base.V21.Theme.MaterialComponents" />
+    <style name="Example.Theme.1212" parent="Base.V24.Theme.Material3.Dark" />
+    <style name="Example.Theme.12121" parent="Base.V14.Theme.Material3.Dark" />
 
 </resources>

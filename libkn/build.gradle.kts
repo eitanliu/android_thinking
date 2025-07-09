@@ -37,6 +37,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.serialization.core)
+            implementation(libs.kotlinx.io.core)
+            implementation(libs.kotlinx.datetime)
             //put your multiplatform dependencies here
         }
         commonTest.dependencies {

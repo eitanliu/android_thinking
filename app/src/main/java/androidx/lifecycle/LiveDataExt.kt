@@ -2,6 +2,8 @@ package androidx.lifecycle
 
 import androidx.arch.core.internal.SafeIterableMap
 
+val LIVE_DATA_NOT_SET: Any = LiveData.NOT_SET
+
 var <T> LiveData<T>.mVersion
     get() = version
     internal set(value) {
@@ -9,6 +11,12 @@ var <T> LiveData<T>.mVersion
         versionField.isAccessible = true
         versionField.set(this, value)
         this.setObserverVersion(value)
+    }
+
+var <T> LiveData<T>.pendingData
+    get() = mPendingData
+    internal set(value) {
+        mPendingData = value
     }
 
 @Suppress("NOTHING_TO_INLINE", "RestrictedApi")

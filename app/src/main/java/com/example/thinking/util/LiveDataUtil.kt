@@ -1,9 +1,11 @@
 package com.example.thinking.util
 
+import androidx.lifecycle.LIVE_DATA_NOT_SET
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.pendingData
 import com.example.thinking.binding.CloseableObserver
 import com.example.thinking.binding.LiveDataObserver
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +27,20 @@ fun <T> LiveData<T>.observeCloseable(
         override fun onChanged(value: T) {
             observer.onChanged(value)
         }
+    }
+}
+
+fun <T> MutableLiveData<T>.postCompareSet(newValue: T): Boolean {
+    return if (isInitialized) {
+        if (value == newValue || pendingData.let { it != LIVE_DATA_NOT_SET && it == value }) {
+            return false
+        } else {
+            postValue(newValue)
+            true
+        }
+    } else {
+        postValue(newValue)
+        true
     }
 }
 

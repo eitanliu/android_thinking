@@ -3,8 +3,8 @@
 ## Studio
 
 [Android Studio 当前版本](https://developer.android.com/studio/releases)  
-[Android Gradle 插件版本](https://developer.android.com/studio/releases/gradle-plugin)  
 [Android Studio 历史版本](https://developer.android.com/studio/archive)  
+[Android Gradle 插件版本](https://developer.android.com/studio/releases/gradle-plugin)  
 [Maven Repository AGP versions](https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google)  
 
 项目 `~/Library/Application Support/Google/` `AndroidStudioxxxx.xx/workspace`  

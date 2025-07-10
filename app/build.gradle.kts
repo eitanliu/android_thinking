@@ -51,19 +51,25 @@ android {
             )
         }
     }
+
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
     }
 
-    viewBinding.enable = true
-    dataBinding.enable = true
-
     dependenciesInfo {
         includeInApk = true
         includeInBundle = true
     }
+
+    lintOptions.apply {
+        // isAbortOnError = true // 禁用所有链接检查
+        // isCheckReleaseBuilds = true // 忽略所有链接检查警告
+        // baseline(rootProject.file("lint.xml"))
+        disable("ObsoleteSdkInt")
+    }
+
     buildFeatures {
         buildConfig = true
         resValues = true

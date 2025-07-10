@@ -78,6 +78,7 @@ fun Bundle.putValue(key: String?, value: Any?) {
         is Serializable -> putSerializable(key, value)
 
         else -> {
+            @Suppress("KotlinConstantConditions")
             if (value is IBinder) {
                 putBinder(key, value)
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && value is Size) {

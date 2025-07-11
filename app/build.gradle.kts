@@ -109,6 +109,11 @@ kotlin {
 dependencies {
 
     coreLibraryDesugaring(libs.desugar.jdk.libs)
+    // compileOnly(files("sources/android-35.jar"))
+    implementation(fileTree(mapOf(
+        "dir" to "libs",
+        "include" to listOf("*.jar")
+    )))
     // android
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)

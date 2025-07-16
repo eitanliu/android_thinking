@@ -255,6 +255,12 @@ eitanliu-cleaner-compat = { module = "com.github.eitanliu.cleaner:compat", versi
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+# https://developer.android.com/build/publish-library/fused-library
+android-fused-library = { id = "com.android.fused-library", version.ref = "agp" }
+# https://developer.android.com/guide/playcore/feature-delivery
+android-dynamic-feature = { id = "com.android.dynamic-feature", version.ref = "agp" }
+# https://developer.android.com/guide/playcore/asset-delivery/integrate-java
+android-asset-pack = { id = "com.android.asset-pack", version.ref = "agp" }
 # https://mvnrepository.com/artifact/com.android.kotlin.multiplatform
 android-multiplatform = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 compose-hot-reload = { id = "org.jetbrains.compose.hot-reload", version.ref = "compose-hot-reload" }

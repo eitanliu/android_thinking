@@ -67,7 +67,10 @@ android {
         // isAbortOnError = true // 禁用所有链接检查
         // isCheckReleaseBuilds = true // 忽略所有链接检查警告
         // baseline(rootProject.file("lint.xml"))
+        // sources lint
         disable("ObsoleteSdkInt")
+        // xml lint
+        disable("HardcodedText", "SmallSp", "SpUsage")
     }
 
     buildFeatures {
@@ -110,10 +113,7 @@ dependencies {
 
     coreLibraryDesugaring(libs.desugar.jdk.libs)
     // compileOnly(files("sources/android-35.jar"))
-    implementation(fileTree(mapOf(
-        "dir" to "libs",
-        "include" to listOf("*.jar")
-    )))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
     // android
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)

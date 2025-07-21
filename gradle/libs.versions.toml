@@ -138,19 +138,26 @@ androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtim
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "androidx-paging" }
 androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "androidx-paging" }
-androidx-paging-guava = { module = "androidx.paging:paging-guava", version.ref = "androidx-paging" }
 androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "androidx-paging" }
+androidx-paging-guava = { module = "androidx.paging:paging-guava", version.ref = "androidx-paging" }
+androidx-paging-testing = { module = "androidx.paging:paging-testing", version.ref = "androidx-paging" }
+androidx-room = { module = "androidx.room:room", version.ref = "androidx-room" }
+androidx-room-common = { module = "androidx.room:room-common", version.ref = "androidx-room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidx-room" }
-androidx-room-guava = { module = "androidx.room:room-guava", version.ref = "androidx-room" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "androidx-room" }
+androidx-room-guava = { module = "androidx.room:room-guava", version.ref = "androidx-room" }
+androidx-room-paging-guava = { module = "androidx.room:room-paging-guava", version.ref = "androidx-room" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "androidx-room" }
 androidx-savedstate = { module = "androidx.savedstate:savedstate", version.ref = "androidx-savedstate" }
-androidx-savedstate-ktx = { module = "androidx.savedstate:savedstate-ktx", version.ref = "androidx-savedstate" }
+androidx-savedstate-compose = { module = "androidx.savedstate:savedstate-compose", version.ref = "androidx-savedstate" }
+androidx-savedstate-testing = { module = "androidx.savedstate:savedstate-testing", version.ref = "androidx-savedstate" }
 androidx-sqlite = { module = "androidx.sqlite:sqlite", version.ref = "androidx-sqlite" }
 androidx-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "androidx-sqlite" }
+androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidx-sqlite" }
 androidx-sqlite-framework = { module = "androidx.sqlite:sqlite-framework", version.ref = "androidx-sqlite" }
+androidx-sqlite-testing = { module = "androidx.sqlite:sqlite-testing", version.ref = "androidx-sqlite" }
 
 # Compose
 # https://developer.android.com/develop/ui/compose/bom/bom-mapping

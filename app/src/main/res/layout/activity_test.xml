@@ -4,26 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".document.DocumentScannerActivity">
+    tools:context=".app.TestActivity">
 
     <Button
         android:id="@+id/btn_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#3000"
+        android:textColor="#000"
+        android:textSize="8dp"
         android:text="Test" />
 
     <Button
-        android:id="@+id/btn_scan"
+        android:id="@+id/btn_status_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Scan" />
-
-    <Button
-        android:id="@+id/btn_share"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Share" />
+        android:text="Status Bar" />
 
 </LinearLayout>

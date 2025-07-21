@@ -24,7 +24,7 @@ object Logcat {
     var space = "->"
     var isDebug = true
 
-    private inline fun trace(): String {
+    fun trace(): String {
         // 获取异常所在调用栈信息
         val caller = Throwable().stackTrace.first { it.className != Logcat::class.java.name }
         // 类名 + 方法名

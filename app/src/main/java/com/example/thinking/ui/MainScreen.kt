@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.thinking.MainActivity
+import com.example.thinking.app.TestActivity
 import com.example.thinking.document.DocumentScannerActivity
 import com.example.thinking.util.catchException
 import com.example.thinking.util.startActivity
@@ -49,6 +50,11 @@ fun MainScreen(
                 onValueChange = {},
                 modifier = Modifier.fillMaxWidth(),
             )
+            Button(onClick = catchException {
+                context.startActivity<TestActivity>()
+            }) {
+                Text("Test")
+            }
             Button(onClick = catchException {
                 navController.navigate(AppDestination.SPEECH)
             }) {

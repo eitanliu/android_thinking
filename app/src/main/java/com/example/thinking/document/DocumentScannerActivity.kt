@@ -1,5 +1,6 @@
 package com.example.thinking.document
 
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
@@ -12,9 +13,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.thinking.R
+import com.example.thinking.app.TestActivity
 import com.example.thinking.databinding.ActivityDocumentScannerBinding
 import com.example.thinking.util.Logcat
 import com.example.thinking.util.selfActivity
+import com.example.thinking.util.startActivity
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
@@ -66,6 +69,20 @@ class DocumentScannerActivity : AppCompatActivity() {
         binding.btnScan.setOnClickListener {
             startScan()
         }
+        binding.btnTest.setOnClickListener {
+            startActivity<TestActivity>()
+        }
+        binding.btnShare.setOnClickListener {
+            shareText(selfActivity, "Hello World")
+        }
+    }
+
+    fun shareText(context: Context, text: String) {
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, text)
+        }
+        context.startActivity(Intent.createChooser(shareIntent, "Share"))
     }
 
     fun startScan() {

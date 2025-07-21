@@ -13,12 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Thinking"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
-
-        <activity
-            android:name=".document.DocumentScannerActivity"
-            android:exported="false" />
 
         <!-- https://stackoverflow.com/questions/52786963/unable-to-get-provider-com-google-android-gms-ads-mobileadsinitprovider-java-la -->
         <!-- https://developers.google.com/admob/android/quick-start#import_the_mobile_ads_sdk -->
@@ -40,6 +36,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".app.TestActivity"
+            android:theme="@style/AppTheme.Transparent"
+            android:exported="true" />
+
+        <activity
+            android:name=".document.DocumentScannerActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

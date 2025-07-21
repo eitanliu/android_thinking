@@ -119,6 +119,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.constraintlayout.compose)
 
     // ktx
     implementation(libs.androidx.activity.ktx)

@@ -16,6 +16,7 @@ androidx-dynamicanimation = "1.1.0"
 androidx-fragment = "1.8.8"
 androidx-collection = "1.5.0"
 androidx-core = "1.16.0"
+androidx-credentials = "1.5.0"
 androidx-datastore = "1.1.7"
 androidx-espresso = "3.6.1"
 androidx-lifecycle = "2.9.1"
@@ -49,17 +50,10 @@ play-asset = "2.3.0"
 play-feature = "2.1.0"
 play-review = "2.0.2"
 play-update = "2.1.0"
-gms-base = "18.7.0"
-gms-location = "21.3.0"
-gms-tasks = "18.3.0"
-gms-auth = "21.3.0"
-gms-ads = "24.4.0"
-gms-ads-identifier = "18.2.0"
-ump = "3.2.0"
-mlkit-barcode-scanning = "17.3.0"
-mlkit-document-scanner = "16.0.0-beta1"
 firebase = "33.16.0"
 billing = "8.0.0"
+mlkit-genai = "1.0.0-beta1"
+mlkit-text-recognition = "16.0.1"
 
 gson = "2.13.1"
 okio = "3.15.0"
@@ -88,6 +82,7 @@ androidx-concurrent-futures-ktx = { module = "androidx.concurrent:concurrent-fut
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-constraintlayout-core = { module = "androidx.constraintlayout:constraintlayout-core", version.ref = "androidx-constraintlayout-core" }
 androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "androidx-constraintlayout-compose" }
+androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "androidx-credentials" }
 androidx-dynamicanimation = { module = "androidx.dynamicanimation:dynamicanimation", version.ref = "androidx-dynamicanimation" }
 androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
@@ -226,22 +221,107 @@ play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref =
 # https://developer.android.com/reference/com/google/android/play/core/release-notes-in_app_updates
 play-update = { module = "com.google.android.play:app-update", version.ref = "play-update" }
 play-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "play-update" }
-# billing https://developer.android.com/google/play/billing/release-notes
-billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
-billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
+# https://developer.android.com/google/play/integrity
+play-integrity = "com.google.android.play:integrity:1.4.0"
+
 # gms https://developers.google.com/android/guides/setup#list-dependencies
-play-services-base = { module = "com.google.android.gms:play-services-base", version.ref = "gms-base" }
-play-services-basement = { module = "com.google.android.gms:play-services-basement", version.ref = "gms-base" }
-play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "gms-location" }
-play-services-tasks = { module = "com.google.android.gms:play-services-tasks", version.ref = "gms-tasks" }
-play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "gms-auth" }
-play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "gms-ads" }
-play-services-ads-identifier = { module = "com.google.android.gms:play-services-ads-identifier", version.ref = "gms-ads-identifier" }
-# admob privacy https://developers.google.com/admob/android/privacy
-google-ump = { module = "com.google.android.ump:user-messaging-platform", version.ref = "ump" }
+play-ads = "com.google.android.gms:play-services-ads:24.4.0"
+play-ads-identifier = "com.google.android.gms:play-services-ads-identifier:18.2.0"
+play-ads-lite = "com.google.android.gms:play-services-ads-lite:24.3.0"
+play-afs-native = "com.google.android.gms:play-services-afs-native:19.1.0"
+play-analytics = "com.google.android.gms:play-services-analytics:18.1.1"  # Deprecated
+play-appindex = "com.google.android.gms:play-services-appindex:16.2.0"
+play-appsearch = "com.google.android.gms:play-services-appsearch:16.0.1"
+play-appset = "com.google.android.gms:play-services-appset:16.1.0"
+play-auth = "com.google.android.gms:play-services-auth:21.3.0"
+play-auth-api-phone = "com.google.android.gms:play-services-auth-api-phone:18.2.0"
+play-auth-blockstore = "com.google.android.gms:play-services-auth-blockstore:16.4.0"
+play-awareness = "com.google.android.gms:play-services-awareness:19.1.0"
+play-base = "com.google.android.gms:play-services-base:18.7.2"
+play-base-testing = "com.google.android.gms:play-services-base-testing:16.1.0"
+play-basement = "com.google.android.gms:play-services-basement:18.7.1"
+play-tasks = "com.google.android.gms:play-services-tasks:18.3.2"
+play-camera-low-light-boost = "com.google.android.gms:play-services-camera-low-light-boost:16.0.1-beta04"
+play-cast = "com.google.android.gms:play-services-cast:22.1.0"
+play-cast-framework = "com.google.android.gms:play-services-cast-framework:22.1.0"
+play-cronet = "com.google.android.gms:play-services-cronet:18.1.0"
+play-dtdi = "com.google.android.gms:play-services-dtdi:16.0.0-beta02"
+play-fitness = "com.google.android.gms:play-services-fitness:21.2.0"
+play-games-v2 = "com.google.android.gms:play-services-games-v2:21.0.0"
+play-games-v2-native-c = "com.google.android.gms:play-services-games-v2-native-c:17.0.0-beta1"
+play-games = "com.google.android.gms:play-services-games:23.2.0"
+play-home = "com.google.android.gms:play-services-home:16.0.0"
+play-instantapps = "com.google.android.gms:play-services-instantapps:18.2.0"  # Deprecated
+play-location = "com.google.android.gms:play-services-location:21.3.0"
+play-maps = "com.google.android.gms:play-services-maps:19.2.0"
+play-maps3d = "com.google.android.gms:play-services-maps3d:0.0.2"
+play-nearby = "com.google.android.gms:play-services-nearby:19.3.0"
+# https://developers.google.com/android/guides/opensource
+play-oss-licenses = "com.google.android.gms:play-services-oss-licenses:17.2.1"
+play-pal = "com.google.android.gms:play-services-pal:22.1.0"
+play-password-complexity = "com.google.android.gms:play-services-password-complexity:18.1.0"
+play-pay = "com.google.android.gms:play-services-pay:16.5.0"
+play-recaptcha = "com.google.android.gms:play-services-recaptcha:17.1.0"
+play-tagmanager = "com.google.android.gms:play-services-tagmanager:18.3.0"
+play-tflite-acceleration-service = "com.google.android.gms:play-services-tflite-acceleration-service:16.4.0-beta01"
+play-tflite-gpu = "com.google.android.gms:play-services-tflite-gpu:16.4.0"
+play-tflite-java = "com.google.android.gms:play-services-tflite-java:16.4.0"
+play-tflite-support = "com.google.android.gms:play-services-tflite-support:16.4.0"
+play-threadnetwork = "com.google.android.gms:play-services-threadnetwork:16.3.0"
+play-time = "com.google.android.gms:play-services-time:16.0.1"
+play-vision = "com.google.android.gms:play-services-vision:20.1.3"
+play-wallet = "com.google.android.gms:play-services-wallet:19.4.0"
+# https://developer.android.com/training/wearables/data-layer
+play-wearable = "com.google.android.gms:play-services-wearable:19.0.0"
+
 # ml-kit https://developers.google.com/ml-kit/release-notes
-mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "mlkit-barcode-scanning" }
-mlkit-document-scanner = { module = "com.google.android.gms:play-services-mlkit-document-scanner", version.ref = "mlkit-document-scanner" }
+play-code-scanner = "com.google.android.gms:play-services-code-scanner:16.1.0"
+play-mlkit-barcode-scanning = "com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1"
+play-mlkit-document-scanner = "com.google.android.gms:play-services-mlkit-document-scanner:16.0.0-beta1"
+play-mlkit-face-detection = "com.google.android.gms:play-services-mlkit-face-detection:17.1.0"
+play-mlkit-image-labeling = "com.google.android.gms:play-services-mlkit-image-labeling:16.0.8"
+play-mlkit-image-labeling-custom = "com.google.android.gms:play-services-mlkit-image-labeling-custom:16.0.0-beta5"
+play-mlkit-language-id = "com.google.android.gms:play-services-mlkit-language-id:17.0.0"
+play-mlkit-smart-reply = "com.google.android.gms:play-services-mlkit-smart-reply:16.0.0-beta1"
+play-mlkit-subject-segmentation = "com.google.android.gms:play-services-mlkit-subject-segmentation:16.0.0-beta1"
+play-mlkit-text-recognition = "com.google.android.gms:play-services-mlkit-text-recognition:19.0.1"
+play-mlkit-text-recognition-chinese = "com.google.android.gms:play-services-mlkit-text-recognition-chinese:16.0.1"
+play-mlkit-text-recognition-devanagari = "com.google.android.gms:play-services-mlkit-text-recognition-devanagari:16.0.1"
+play-mlkit-text-recognition-japanese = "com.google.android.gms:play-services-mlkit-text-recognition-japanese:16.0.1"
+play-mlkit-text-recognition-korean = "com.google.android.gms:play-services-mlkit-text-recognition-korean:16.0.1"
+# GenAI
+mlkit-genai-summarization = { module = "com.google.mlkit:genai-summarization", version.ref = "mlkit-genai" }
+mlkit-genai-proofreading = { module = "com.google.mlkit:genai-proofreading", version.ref = "mlkit-genai" }
+mlkit-genai-rewriting = { module = "com.google.mlkit:genai-rewriting", version.ref = "mlkit-genai" }
+mlkit-genai-image-description = { module = "com.google.mlkit:genai-image-description", version.ref = "mlkit-genai" }
+# Vision
+mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-chinese = { module = "com.google.mlkit:text-recognition-chinese", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-devanagari = { module = "com.google.mlkit:text-recognition-devanagari", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-japanese = { module = "com.google.mlkit:text-recognition-japanese", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-korean = { module = "com.google.mlkit:text-recognition-korean", version.ref = "mlkit-text-recognition" }
+mlkit-face-detection = "com.google.mlkit:face-detection:16.1.7"
+mlkit-face-mesh-detection = "com.google.mlkit:face-mesh-detection:16.0.0-beta3"
+mlkit-pose-detection = "com.google.mlkit:pose-detection:17.0.0"
+mlkit-pose-detection-accurate = "com.google.mlkit:pose-detection-accurate:17.0.0"
+mlkit-selfie-segmentation = "com.google.mlkit:segmentation-selfie:16.0.0-beta6"
+mlkit-barcode-scanning = "com.google.mlkit:barcode-scanning:17.3.0"
+mlkit-image-labeling = "com.google.mlkit:image-labeling:17.0.9"
+mlkit-image-labeling-custom = "com.google.mlkit:image-labeling-custom:17.0.3"
+mlkit-obj-detection = "com.google.mlkit:object-detection:17.0.2"
+mlkit-obj-detection-custom = "com.google.mlkit:object-detection-custom:17.0.2"
+mlkit-digital-ink-recognition = "com.google.mlkit:digital-ink-recognition:18.1.0"
+# Natural language
+mlkit-language-id = "com.google.mlkit:language-id:17.0.6"
+mlkit-translate = "com.google.mlkit:translate:17.0.3"
+mlkit-smart-reply = "com.google.mlkit:smart-reply:17.0.4"
+mlkit-entity-extraction = "com.google.mlkit:entity-extraction:16.0.0-beta6"
+
+# billing https://developer.android.com/google/play/billing/release-notes
+google-billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
+google-billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
+# admob privacy https://developers.google.com/admob/android/privacy
+google-ump = "com.google.android.ump:user-messaging-platform:3.2.0"
 
 # firebase https://firebase.google.com/support/release-notes/android
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }

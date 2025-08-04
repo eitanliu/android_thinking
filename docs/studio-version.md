@@ -22,3 +22,6 @@ Gradle 源码缓存 `~/.gradle/caches/modules-2/files-2.1/gradle/gradle`
 依赖文件缓存位置 `~/.gradle/caches/modules-2/files-2.1`  
 版本信息缓存位置 `~/.gradle/caches/modules-2/metadata-x.xxx`  
 [Dealing with ephemeral builds](https://docs.gradle.org/8.14.1/userguide/dependency_caching.html#sec:ephemeral-ci-cache)  
+默认 `NDK` 版本查看 `AGP release notes`  
+[AGP release notes](https://developer.android.com/build/releases/gradle-plugin#compatibility)  
+[AGP past release notes.](https://developer.android.com/build/releases/past-releases)  

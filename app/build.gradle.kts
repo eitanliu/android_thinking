@@ -68,9 +68,9 @@ android {
         // isCheckReleaseBuilds = true // 忽略所有链接检查警告
         // baseline(rootProject.file("lint.xml"))
         // sources lint
-        disable("ObsoleteSdkInt")
+        disable += listOf("ObsoleteSdkInt")
         // xml lint
-        disable("HardcodedText", "SmallSp", "SpUsage")
+        disable += listOf("HardcodedText", "SmallSp", "SpUsage")
     }
 
     buildFeatures {

@@ -2,42 +2,10 @@ package com.example.thinking.util
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresPermission
-
-object NetworkUtil {
-
-    private val networkCallback = object : ConnectivityManager.NetworkCallback() {
-        override fun onCapabilitiesChanged(
-            network: Network, networkCapabilities: NetworkCapabilities
-        ) {
-            super.onCapabilitiesChanged(network, networkCapabilities)
-            onCapabilitiesChanged?.invoke(network, networkCapabilities)
-        }
-    }
-
-    var onCapabilitiesChanged: ((
-        network: Network, networkCapabilities: NetworkCapabilities
-    ) -> Unit)? = null
-
-    @RequiresPermission(android.Manifest.permission.ACCESS_NETWORK_STATE)
-    fun Context.registerNetworkCallback(
-        onCapabilitiesChanged: ((
-            network: Network, networkCapabilities: NetworkCapabilities
-        ) -> Unit)? = null,
-    ) {
-        NetworkUtil.onCapabilitiesChanged = onCapabilitiesChanged
-        connectivityManager.registerDefaultNetworkCallback(networkCallback)
-    }
-
-    @RequiresPermission(android.Manifest.permission.ACCESS_NETWORK_STATE)
-    fun Context.unregisterNetworkCallback() {
-        connectivityManager.unregisterNetworkCallback(networkCallback)
-    }
-}
 
 // 是否有网络连接
 val Context.isNetWorkConnected

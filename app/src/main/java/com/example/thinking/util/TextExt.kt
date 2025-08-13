@@ -7,17 +7,8 @@ import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
 import androidx.annotation.ColorInt
-import org.json.JSONObject
 import java.nio.charset.Charset
 import java.security.MessageDigest
-
-object TextUtil {
-
-    fun formatJson(json: String?, indent: Int = 2): String {
-        if (null == json || "" == json) return ""
-        return JSONObject(json).toString(indent)
-    }
-}
 
 /**
  * 获取字符串字节长度

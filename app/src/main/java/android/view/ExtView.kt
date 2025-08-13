@@ -46,16 +46,13 @@ class ExtView : View {
 
         @JvmStatic
         fun getDefaultSize2(size: Int, measureSpec: Int): Int {
-            var result = size
             val specMode = MeasureSpec.getMode(measureSpec)
             val specSize = MeasureSpec.getSize(measureSpec)
-
-            when (specMode) {
-                MeasureSpec.UNSPECIFIED -> {}
-                MeasureSpec.AT_MOST -> result = min(size, specSize)
-                MeasureSpec.EXACTLY -> result = specSize
+            return when (specMode) {
+                MeasureSpec.AT_MOST -> min(size, specSize)
+                MeasureSpec.EXACTLY -> specSize
+                else -> size
             }
-            return result
         }
     }
 }

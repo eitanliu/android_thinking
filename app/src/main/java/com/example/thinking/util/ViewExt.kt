@@ -9,7 +9,6 @@ import androidx.core.view.SoftwareKeyboardControllerCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.findViewTreeLifecycleOwner
 
 @Suppress("UNCHECKED_CAST")

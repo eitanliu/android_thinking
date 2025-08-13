@@ -9,6 +9,12 @@ open class SingleEqualsData<T> : SingleLiveData<T> {
     constructor() : super()
 
     override fun setValue(value: T) {
-        compareSet(value)
+        if (isInitialized) {
+            if (value != getValue()) {
+                super.setValue(value)
+            }
+        } else {
+            super.setValue(value)
+        }
     }
 }

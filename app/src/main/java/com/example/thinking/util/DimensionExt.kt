@@ -4,11 +4,7 @@ package com.example.thinking.util
 
 import android.content.Context
 import android.content.res.Resources
-import android.content.res.Resources.Theme
 import android.util.TypedValue
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.util.TypedValueCompat
 import kotlin.math.roundToInt
 

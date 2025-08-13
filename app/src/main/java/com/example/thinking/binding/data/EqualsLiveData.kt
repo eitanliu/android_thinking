@@ -9,6 +9,12 @@ open class EqualsLiveData<T> : SafetyLiveData<T> {
     constructor() : super()
 
     override fun setValue(value: T) {
-        compareSet(value)
+        if (isInitialized) {
+            if (value != getValue()) {
+                super.setValue(value)
+            }
+        } else {
+            super.setValue(value)
+        }
     }
 }

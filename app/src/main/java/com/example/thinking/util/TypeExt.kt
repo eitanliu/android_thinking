@@ -18,9 +18,9 @@ inline val Class<*>.TAG: String get() = this.simpleName
 
 inline val <T : Activity> T.selfActivity get() = this
 
-inline val <T : Dialog> T.selfDialog get() = this
-
 inline val <T : Fragment> T.selfFragment get() = this
+
+inline val <T : Dialog> T.selfDialog get() = this
 
 inline val <T : View> T.selfView get() = this
 

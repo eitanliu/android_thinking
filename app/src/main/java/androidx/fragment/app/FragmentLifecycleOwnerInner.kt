@@ -42,6 +42,8 @@ val LifecycleOwner.parentFragmentManager: FragmentManager?
         }
     }
 
+inline fun <reified T : Fragment> LifecycleOwner.asFragment(): T? = asFragment() as? T
+
 fun LifecycleOwner.asFragment(): Fragment? {
     return when (this) {
         is Fragment -> this
@@ -52,7 +54,13 @@ fun LifecycleOwner.asFragment(): Fragment? {
 
 private val FragmentViewLifecycleOwner.fragment: Fragment?
     get() {
-        val field = FragmentViewLifecycleOwner::class.java.getDeclaredField("mFragment")
+        val field = FragmentViewLifecycleOwner::class.java.run {
+            try {
+                getField("mFragment")
+            } catch (_: Exception) {
+                fields.firstOrNull { it.type == Fragment::class.java }
+            }
+        } ?: return null
         field.isAccessible = true
         return field.get(this) as? Fragment
     }

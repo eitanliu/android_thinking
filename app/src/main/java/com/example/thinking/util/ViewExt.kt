@@ -3,6 +3,7 @@
 package com.example.thinking.util
 
 import android.util.SparseArray
+import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import androidx.core.view.SoftwareKeyboardControllerCompat
@@ -26,6 +27,8 @@ inline fun <T> View.getBindingTag(key: Int) = bindingTags.get(key) as? T
 
 @Suppress("UNCHECKED_CAST", "EXTENSION_SHADOWED_BY_MEMBER")
 inline fun <T> View.getTag(key: Int) = getTag(key) as? T
+
+inline val View.inflater: LayoutInflater get() = LayoutInflater.from(context)
 
 var View.rootWindow
     get() = rootView.getTag<Window>(R.id.rootWindow)

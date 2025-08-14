@@ -29,6 +29,7 @@ androidx-savedstate = "1.3.0"
 androidx-sqlite = "2.5.2"
 androidx-startup = "1.2.0"
 androidx-work = "2.10.2"
+androidx-media3 = "1.8.0"
 androidx-test-ext = "1.2.1"
 androidx-concurrent-futures = "1.2.0"
 compose-bom = "2025.06.00"
@@ -98,6 +99,35 @@ androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "
 androidx-work-gcm = { module = "androidx.work:work-gcm", version.ref = "androidx-work" }
 androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "androidx-work" }
 androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "androidx-work" }
+# https://developer.android.com/jetpack/androidx/releases/media3
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-smoothstreaming = { module = "androidx.media3:media3-exoplayer-smoothstreaming", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-rtsp = { module = "androidx.media3:media3-exoplayer-rtsp", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-midi = { module = "androidx.media3:media3-exoplayer-midi", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-ima = { module = "androidx.media3:media3-exoplayer-ima", version.ref = "androidx-media3" }
+androidx-media3-datasource-cronet = { module = "androidx.media3:media3-datasource-cronet", version.ref = "androidx-media3" }
+androidx-media3-datasource-okhttp = { module = "androidx.media3:media3-datasource-okhttp", version.ref = "androidx-media3" }
+androidx-media3-datasource-rtmp = { module = "androidx.media3:media3-datasource-rtmp", version.ref = "androidx-media3" }
+androidx-media3-ui-compose = { module = "androidx.media3:media3-ui-compose", version.ref = "androidx-media3" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media3" }
+androidx-media3-ui-leanback = { module = "androidx.media3:media3-ui-leanback", version.ref = "androidx-media3" }
+androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "androidx-media3" }
+androidx-media3-extractor = { module = "androidx.media3:media3-extractor", version.ref = "androidx-media3" }
+androidx-media3-cast = { module = "androidx.media3:media3-cast", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-workmanager = { module = "androidx.media3:media3-exoplayer-workmanager", version.ref = "androidx-media3" }
+androidx-media3-transformer = { module = "androidx.media3:media3-transformer", version.ref = "androidx-media3" }
+androidx-media3-effect = { module = "androidx.media3:media3-effect", version.ref = "androidx-media3" }
+androidx-media3-muxer = { module = "androidx.media3:media3-muxer", version.ref = "androidx-media3" }
+androidx-media3-test-utils = { module = "androidx.media3:media3-test-utils", version.ref = "androidx-media3" }
+androidx-media3-test-utils-robolectric = { module = "androidx.media3:media3-test-utils-robolectric", version.ref = "androidx-media3" }
+androidx-media3-container = { module = "androidx.media3:media3-container", version.ref = "androidx-media3" }
+androidx-media3-database = { module = "androidx.media3:media3-database", version.ref = "androidx-media3" }
+androidx-media3-decoder = { module = "androidx.media3:media3-decoder", version.ref = "androidx-media3" }
+androidx-media3-datasource = { module = "androidx.media3:media3-datasource", version.ref = "androidx-media3" }
+androidx-media3-common = { module = "androidx.media3:media3-common", version.ref = "androidx-media3" }
+androidx-media3-common-ktx = { module = "androidx.media3:media3-common-ktx", version.ref = "androidx-media3" }
 
 material = { module = "com.google.android.material:material", version.ref = "material" }
 

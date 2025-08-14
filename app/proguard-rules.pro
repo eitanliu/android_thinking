@@ -22,11 +22,11 @@
 
 -keep class androidx.lifecycle.LiveData
 -keepclassmembers class androidx.lifecycle.LiveData {
-    *;
+   <fields>;
 }
 -keep class androidx.lifecycle.LiveData$ObserverWrapper
 -keepclassmembers class androidx.lifecycle.LiveData$ObserverWrapper {
-    *;
+    <fields>;
 }
 -keepclassmembers class androidx.fragment.app.FragmentViewLifecycleOwner {
     private androidx.fragment.app.Fragment mFragment;

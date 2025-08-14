@@ -40,6 +40,10 @@ object Logcat {
     ) = msg(msg, null, level, tag)
 
     fun msg(
+        msg: String, tag: String, @Level level: Int = Logcat.level,
+    ) = msg(msg, null, level, tag)
+
+    fun msg(
         msg: String, tr: Throwable? = null,
         @Level level: Int = Logcat.level,
     ) = msg(msg, tr, level, tag)

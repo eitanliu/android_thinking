@@ -5,6 +5,7 @@
 ### Core
 
 [platform/frameworks/base/+/refs/heads/main/core](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/main/core/java)  
+[com.android.internal](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/main/core/java/com/android/internal)  
 
 ## Tools
 

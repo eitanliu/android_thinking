@@ -1,5 +1,7 @@
 package android.content.pm;
 
+import android.annotation.NonNull;
+import android.annotation.UnsupportedAppUsage;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -50,7 +52,7 @@ public class VerifierInfo implements Parcelable{
         dest.writeSerializable(publicKey);
     }
 
-    public static final @android.annotation.NonNull Parcelable.Creator<VerifierInfo> CREATOR
+    public static final @NonNull Parcelable.Creator<VerifierInfo> CREATOR
             = new Parcelable.Creator<VerifierInfo>() {
         public VerifierInfo createFromParcel(Parcel source) {
             return new VerifierInfo(source);

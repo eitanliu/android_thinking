@@ -42,7 +42,7 @@ val LifecycleOwner.parentFragmentManager: FragmentManager?
         }
     }
 
-inline fun <reified T : Fragment> LifecycleOwner.asFragment(): T? = asFragment() as? T
+inline fun <reified T : Fragment> LifecycleOwner.asFragmentType(): T? = asFragment() as? T
 
 fun LifecycleOwner.asFragment(): Fragment? {
     return when (this) {

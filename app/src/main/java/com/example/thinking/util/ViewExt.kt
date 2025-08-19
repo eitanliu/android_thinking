@@ -2,6 +2,8 @@
 
 package com.example.thinking.util
 
+import android.content.Context
+import android.content.res.Configuration
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -49,4 +51,16 @@ fun View.findLifecycleOwner(): LifecycleOwner? {
         lifecycleOwner = context.typeIf<LifecycleOwner>()
     }
     return lifecycleOwner
+}
+
+inline fun Context.isRtl(): Boolean {
+    return resources.configuration.isRtl()
+}
+
+inline fun Configuration.isRtl(): Boolean {
+    return layoutDirection == View.LAYOUT_DIRECTION_RTL
+}
+
+inline fun View.isRtl(): Boolean {
+    return layoutDirection == View.LAYOUT_DIRECTION_RTL
 }

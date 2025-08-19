@@ -99,6 +99,7 @@ androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "
 androidx-work-gcm = { module = "androidx.work:work-gcm", version.ref = "androidx-work" }
 androidx-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "androidx-work" }
 androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "androidx-work" }
+# https://developer.android.com/media/media3
 # https://developer.android.com/jetpack/androidx/releases/media3
 androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media3" }
 androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "androidx-media3" }

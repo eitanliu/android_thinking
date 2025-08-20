@@ -7,20 +7,20 @@ import androidx.lifecycle.SavedStateHandle
  * [androidx.savedstate.SavedStateWriter]
  */
 
-val SavedStateHandle.bundle: Bundle
-    get() {
-        val keys = keys()
-        return Bundle(keys.size).also {
-            keys.forEach { key ->
-                it.putValue(key, get(key))
-            }
-        }
+fun SavedStateHandle.toBundle(): Bundle {
+    val keys = keys()
+    val bundle = Bundle(keys.size)
+    for (key in keys) {
+        bundle.putValue(key, get(key))
     }
+    return bundle
+}
 
 fun SavedStateHandle.toMap(): Map<String, Any?> {
-    val state: MutableMap<String, Any?> = HashMap()
-    for (key in keys()) {
-        state[key] = this[key]
+    val keys = keys()
+    val state = LinkedHashMap<String, Any?>(keys.size)
+    for (key in keys) {
+        state[key] = get(key)
     }
     return state
 }

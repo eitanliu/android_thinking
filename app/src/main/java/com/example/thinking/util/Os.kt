@@ -1,4 +1,4 @@
-@file:Suppress("ConstPropertyName")
+@file:Suppress("ClassName", "ConstPropertyName")
 
 package com.example.thinking.util
 

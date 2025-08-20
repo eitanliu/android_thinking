@@ -1,3 +1,5 @@
+@file:Suppress("ClassName", "ConstPropertyName", "DEPRECATED_JAVA_ANNOTATION")
+
 package com.example.thinking.util
 
 import java.lang.Deprecated
@@ -5,7 +7,6 @@ import java.lang.Deprecated
 /**
  * [android.R](https://developer.android.com/reference/android/R)
  */
-@Suppress("DEPRECATED_JAVA_ANNOTATION")
 object OsR {
 
     fun get(type: String, name: String): Int {

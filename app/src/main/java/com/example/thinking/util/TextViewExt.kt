@@ -3,7 +3,7 @@ package com.example.thinking.util
 import android.graphics.drawable.Drawable
 import android.widget.TextView
 
-fun TextView.setCompoundDrawablesRelative(
+fun TextView.setDrawablesRelative(
     start: Drawable? = null,
     top: Drawable? = null,
     end: Drawable? = null,

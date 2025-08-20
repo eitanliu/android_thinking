@@ -5,8 +5,15 @@ package com.example.thinking.util
 import android.os.Build
 
 object Os {
+
+    /**
+     * [android.R](https://developer.android.com/reference/android/R)
+     */
     val R = OsR
 
+    /**
+     * [android.os.Build.VERSION_CODES](https://developer.android.com/reference/android/os/Build.VERSION_CODES)
+     */
     object Versions {
         const val v2_3 = Build.VERSION_CODES.GINGERBREAD // 9
         const val v2_3_3 = Build.VERSION_CODES.GINGERBREAD_MR1 // 10

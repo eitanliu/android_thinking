@@ -4,9 +4,11 @@ package com.example.thinking.util
 
 import android.content.Context
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewParent
 import android.view.Window
 import androidx.core.view.SoftwareKeyboardControllerCompat
 import androidx.databinding.DataBindingUtil
@@ -53,8 +55,30 @@ fun View.findLifecycleOwner(): LifecycleOwner? {
     return lifecycleOwner
 }
 
+inline fun <reified T> View.findParent(): T? {
+    var view = parent
+    while (view != null) {
+        if (view is T) return view
+        view = view.parent
+    }
+    return null
+}
+
+inline fun View.parentIf(predicate: (ViewParent?) -> Boolean): ViewParent? {
+    var view = parent
+    while (view != null) {
+        if (predicate(view)) return view
+        view = view.parent
+    }
+    return null
+}
+
 inline fun Context.isRtl(): Boolean {
     return resources.configuration.isRtl()
+}
+
+inline fun Resources.isRtl(): Boolean {
+    return configuration.isRtl()
 }
 
 inline fun Configuration.isRtl(): Boolean {

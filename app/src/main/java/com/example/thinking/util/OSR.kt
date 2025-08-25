@@ -7,7 +7,7 @@ import java.lang.Deprecated
 /**
  * [android.R](https://developer.android.com/reference/android/R)
  */
-object OsR {
+object OSR {
 
     fun get(type: String, name: String): Int {
         try {

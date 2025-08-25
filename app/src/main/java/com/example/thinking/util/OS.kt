@@ -4,12 +4,12 @@ package com.example.thinking.util
 
 import android.os.Build
 
-object Os {
+object OS {
 
     /**
      * [android.R](https://developer.android.com/reference/android/R)
      */
-    val R = OsR
+    // typealias R = OSR
 
     /**
      * [android.os.Build.VERSION_CODES](https://developer.android.com/reference/android/os/Build.VERSION_CODES)

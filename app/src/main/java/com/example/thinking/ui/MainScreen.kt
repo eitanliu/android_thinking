@@ -1,6 +1,7 @@
 package com.example.thinking.ui
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -54,6 +55,11 @@ fun MainScreen(
                 context.startActivity<TestActivity>()
             }) {
                 Text("Test")
+            }
+            Button(onClick = catchException {
+                Toast.makeText(context, "Toast", Toast.LENGTH_SHORT).show()
+            }) {
+                Text("Toast")
             }
             Button(onClick = catchException {
                 navController.navigate(AppDestination.SPEECH)

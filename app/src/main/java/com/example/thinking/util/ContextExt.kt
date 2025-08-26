@@ -5,25 +5,31 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 
-fun Context.contextTree(tree: (context: Context) -> Unit) {
-    tree(this)
-    if (this is ContextWrapper) baseContext.contextTree(tree)
+fun Context.contextEach(action: (context: Context) -> Unit) {
+    var context: Context? = this
+    while (context != null) {
+        action(context)
+        context = if (context is ContextWrapper) {
+            context.baseContext
+        } else {
+            null
+        }
+    }
 }
 
-inline fun <reified T> Context.typeIf(): T? {
+inline fun <reified T> Context.contextType(): T? {
     return contextIf { it is T } as? T
 }
 
 fun Context.contextIf(predicate: (context: Context) -> Boolean): Context? {
-    var current: Context? = this
-    while (current != null) {
-        if (predicate(current)) {
-            return current
-        } else if (current is ContextWrapper) {
-            val base = current.baseContext
-            current = base
+    var context: Context? = this
+    while (context != null) {
+        if (predicate(context)) {
+            return context
+        } else if (context is ContextWrapper) {
+            context = context.baseContext
         } else {
-            current = null
+            context = null
         }
     }
     return null

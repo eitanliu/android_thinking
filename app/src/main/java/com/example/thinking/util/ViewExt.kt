@@ -50,7 +50,7 @@ fun View.findLifecycleOwner(): LifecycleOwner? {
     val binding = DataBindingUtil.findBinding<ViewDataBinding>(this)
     var lifecycleOwner = binding?.lifecycleOwner ?: findViewTreeLifecycleOwner()
     if (lifecycleOwner == null) {
-        lifecycleOwner = context.typeIf<LifecycleOwner>()
+        lifecycleOwner = context.contextType<LifecycleOwner>()
     }
     return lifecycleOwner
 }

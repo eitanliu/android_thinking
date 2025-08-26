@@ -102,9 +102,13 @@ kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.fromTarget(libs.versions.jvm.get())
         freeCompilerArgs.addAll(
+            // 2.1.0
             "-Xwhen-guards",
             "-Xnon-local-break-continue",
-            "-Xmulti-dollar-interpolation"
+            "-Xmulti-dollar-interpolation",
+            // 2.2.0
+            "-Xcontext-parameters",
+            "-Xnested-type-aliases",
         )
     }
 }

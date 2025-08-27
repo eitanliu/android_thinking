@@ -61,6 +61,10 @@
             android:theme="@style/AppTheme.Transparent" />
 
         <activity
+            android:name=".app.DisplayActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".document.DocumentScannerActivity"
             android:exported="false" />
     </application>

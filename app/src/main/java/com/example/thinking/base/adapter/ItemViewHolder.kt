@@ -1,21 +1,29 @@
 package com.example.thinking.base.adapter
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.thinking.base.AttachLifecycleOwner
 
-abstract class ItemViewHolder<VB : ViewBinding, M>(
-    binding: VB
-) : ViewHolderBinding<VB>(binding), ItemBinding<M>
-
-open class ViewHolderBinding<VB : ViewBinding>(
+abstract class ModelBindingViewHolder<M, VB : ViewBinding>(
     val binding: VB
-) : RecyclerView.ViewHolder(binding.root),
-    AttachLifecycleOwner by AttachLifecycleOwner.Impl() {
-}
+) : ModelViewHolder<M>(binding.root)
+
+open class BindingViewHolder<VB : ViewBinding>(
+    val binding: VB
+) : ItemViewHolder(binding.root)
+
+abstract class ModelViewHolder<M>(
+    itemView: View
+) : ItemViewHolder(itemView), ItemModelBinding<M>
+
+open class ItemViewHolder(
+    itemView: View
+) : RecyclerView.ViewHolder(itemView),
+    AttachLifecycleOwner by AttachLifecycleOwner.Impl()
 
 
-interface ItemBinding<M> {
+interface ItemModelBinding<M> {
     fun bind(item: M)
 
     fun unbind() {}

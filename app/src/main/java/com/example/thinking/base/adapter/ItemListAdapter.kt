@@ -1,17 +1,24 @@
 package com.example.thinking.base.adapter
 
+import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-abstract class ItemListAdapter<T, VH : ViewHolderBinding<*>>(
-    diffCallback: DiffUtil.ItemCallback<T> = ItemsSameDiff()
-) : ListAdapter<T, VH>(diffCallback) {
+abstract class ItemListAdapter<T, VH : ItemViewHolder> : ListAdapter<T, VH> {
 
     private var itemClickListener: ItemClickListener? = null
     private var itemOnBindListener: ItemOnBindListener<VH>? = null
+
+    constructor(
+        diffCallback: DiffUtil.ItemCallback<T> = ItemsSameDiff()
+    ) : super(diffCallback)
+
+    constructor(
+        config: AsyncDifferConfig<T>
+    ) : super(config)
 
     open operator fun get(position: Int): T = getItem(position)
 
@@ -31,18 +38,18 @@ abstract class ItemListAdapter<T, VH : ViewHolderBinding<*>>(
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.onAttachedLifecycle()
         if (itemClickListener != null) {
-            holder.binding.root.setOnClickListener { itemClickListener?.invoke(it, position) }
+            holder.itemView.setOnClickListener { itemClickListener?.invoke(it, position) }
         }
-        if (holder is ItemBinding<*>) {
+        if (holder is ItemModelBinding<*>) {
             @Suppress("UNCHECKED_CAST")
-            (holder as ItemBinding<T>).bind(getItem(position))
+            (holder as ItemModelBinding<T>).bind(getItem(position))
         }
         itemOnBindListener?.invoke(this, holder, position)
     }
 
     override fun onViewRecycled(holder: VH) {
         holder.onDetachedLifecycle()
-        if (holder is ItemBinding<*>) {
+        if (holder is ItemModelBinding<*>) {
             holder.unbind()
         }
     }

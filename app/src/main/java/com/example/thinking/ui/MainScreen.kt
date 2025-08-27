@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.thinking.MainActivity
+import com.example.thinking.app.DisplayActivity
 import com.example.thinking.app.TestActivity
 import com.example.thinking.document.DocumentScannerActivity
 import com.example.thinking.util.catchException
@@ -52,14 +53,16 @@ fun MainScreen(
                 modifier = Modifier.fillMaxWidth(),
             )
             Button(onClick = catchException {
+                MainActivity::class
                 context.startActivity<TestActivity>()
             }) {
                 Text("Test")
             }
             Button(onClick = catchException {
-                Toast.makeText(context, "Toast", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Display", Toast.LENGTH_SHORT).show()
+                context.startActivity<DisplayActivity>()
             }) {
-                Text("Toast")
+                Text("Display")
             }
             Button(onClick = catchException {
                 navController.navigate(AppDestination.SPEECH)

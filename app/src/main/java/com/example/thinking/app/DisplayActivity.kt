@@ -37,7 +37,7 @@ class DisplayActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val statusBarHeight = statusBarHeight
-            Logcat.msg("statusBarHeight: $statusBarHeight, ${systemBars.top}")
+            Logcat.msg("statusBarHeight: $statusBarHeight, ${systemBars.top}", Logcat.E)
             val left = systemBars.left
             val right = systemBars.right
             val top = max(statusBarHeight, systemBars.top)
@@ -151,25 +151,40 @@ class DisplayActivity : AppCompatActivity() {
     }
 
     private fun updateConfiguration(context: Context): Configuration {
-        val displayMetrics = context.resources.displayMetrics
-        // val width = min(displayMetrics.widthPixels, displayMetrics.heightPixels)
-        val display = ContextCompat.getDisplayOrDefault(context)
-        val mode = DisplayCompat.getMode(context, display)
-        val width = min(mode.physicalWidth, mode.physicalHeight)
         val resources = context.resources
         val configuration = resources.configuration
+        val displayMetrics = resources.displayMetrics
+        // val physicalWidth = min(displayMetrics.widthPixels, displayMetrics.heightPixels)
+        // val physicalHeight = max(displayMetrics.widthPixels, displayMetrics.heightPixels)
+        val display = ContextCompat.getDisplayOrDefault(context)
+        val mode = DisplayCompat.getMode(context, display)
+        val physicalWidth = min(mode.physicalWidth, mode.physicalHeight)
+        val physicalHeight = max(mode.physicalWidth, mode.physicalHeight)
+        val screenWidth = configuration.smallestScreenWidthDp
+        val screenDensity = displayMetrics.density
+        val screenDpi = configuration.densityDpi
         val designWidth = 420.0
-        val designDesign = width / designWidth
-        val designDpi = (designDesign * 160).roundToInt()
+        val designDensity = physicalWidth / designWidth
+        val designDpi = (designDensity * 160).roundToInt()
         val newConfiguration = Configuration(configuration)
-        val differDip = designDesign - displayMetrics.density
-        Logcat.msg("Display $display")
-        Logcat.msg("DisplayMetrics $${DisplayMetrics.DENSITY_DEFAULT}, ${DisplayMetrics.DENSITY_DEVICE_STABLE}; $displayMetrics")
-        Logcat.msg("width $width, differ density $designDesign - ${displayMetrics.density} = $differDip")
-        Logcat.msg("width $width, differ dpi $designDpi - ${configuration.densityDpi} = ${designDpi - configuration.densityDpi}")
-        // 避免差异过大，超过指定系数使用系统默认值
-        if (abs(differDip) < 0.6) {
+        val differDip = designDensity - screenDensity
+        val differDpi = designDpi - screenDpi
+        Logcat.msg("physical $physicalWidth x $physicalHeight")
+        Logcat.msg("display $physicalWidth, $screenWidth, $designWidth, $display")
+        Logcat.msg("DisplayMetrics ${DisplayMetrics.DENSITY_DEFAULT}, ${DisplayMetrics.DENSITY_DEVICE_STABLE}; $displayMetrics")
+        Logcat.msg("width $physicalWidth, differ density $designDensity - $screenDensity = $differDip")
+        Logcat.msg("width $physicalWidth, differ dpi $designDpi - $screenDpi = $differDpi")
+        // 避免差异过大比较屏幕和设计稿，超过指定系数使用系统默认值
+        // abs(screenWidth - designWidth) < 60
+        // abs(screenWidth - designWidth) / designWidth < 0.15
+        // abs(designDensity - screenDensity) < 0.6
+        // abs(designDpi - screenDpi) < 96
+        if (abs(screenWidth - designWidth) < 60) {
             newConfiguration.densityDpi = designDpi
+            fun calcSize(size: Int) = (size * screenDensity / designDensity).roundToInt()
+            newConfiguration.smallestScreenWidthDp = calcSize(configuration.smallestScreenWidthDp)
+            newConfiguration.screenWidthDp = calcSize(configuration.screenWidthDp)
+            newConfiguration.screenHeightDp = calcSize(configuration.screenHeightDp)
         }
         return newConfiguration
     }

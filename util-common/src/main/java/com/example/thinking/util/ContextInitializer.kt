@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Process
 import android.util.Log
+import androidx.startup.AppInitializer
 import androidx.startup.Initializer
 import java.lang.ref.WeakReference
 
@@ -21,7 +22,11 @@ class ContextInitializer : Initializer<ContextInitializer> {
 
         @JvmStatic
         fun init(context: Context) {
-            Log.d(TAG, "initContext: $context ${processName(context)}")
+            Log.d(TAG, "initContext: ${processName(context)}, $context")
+            AppInitializer.getInstance(context).initializeComponent(ContextInitializer::class.java)
+        }
+
+        private fun initContext(context: Context) {
             _context = WeakReference(context.applicationContext)
         }
 
@@ -41,7 +46,7 @@ class ContextInitializer : Initializer<ContextInitializer> {
     }
 
     override fun create(context: Context): ContextInitializer {
-        init(context)
+        initContext(context)
         return this
     }
 

@@ -153,6 +153,8 @@ class DisplayActivity : AppCompatActivity() {
     private fun updateConfiguration(context: Context): Configuration {
         val resources = context.resources
         val configuration = resources.configuration
+        // val displayMetrics = DisplayMetrics()
+        // displayMetrics.setToDefaults()
         val displayMetrics = resources.displayMetrics
         // val physicalWidth = min(displayMetrics.widthPixels, displayMetrics.heightPixels)
         // val physicalHeight = max(displayMetrics.widthPixels, displayMetrics.heightPixels)
@@ -160,31 +162,39 @@ class DisplayActivity : AppCompatActivity() {
         val mode = DisplayCompat.getMode(context, display)
         val physicalWidth = min(mode.physicalWidth, mode.physicalHeight)
         val physicalHeight = max(mode.physicalWidth, mode.physicalHeight)
-        val screenWidth = configuration.smallestScreenWidthDp
+        val smallestWidth = configuration.smallestScreenWidthDp
+        val screenWidth = configuration.screenWidthDp
+        val screenHeight = configuration.screenHeightDp
         val screenDensity = displayMetrics.density
         val screenDpi = configuration.densityDpi
+        // val physicalWidth = min(screenWidth, screenHeight) * screenDensity
+        // val physicalHeight = max(screenWidth, screenHeight) * screenDensity
+        val calcWidth = smallestWidth * screenDensity
         val designWidth = 420.0
-        val designDensity = physicalWidth / designWidth
+        val designDensity = calcWidth / designWidth
         val designDpi = (designDensity * 160).roundToInt()
         val newConfiguration = Configuration(configuration)
+        val differWidth = smallestWidth - designWidth
         val differDip = designDensity - screenDensity
         val differDpi = designDpi - screenDpi
-        Logcat.msg("physical $physicalWidth x $physicalHeight")
-        Logcat.msg("display $physicalWidth, $screenWidth, $designWidth, $display")
-        Logcat.msg("DisplayMetrics ${DisplayMetrics.DENSITY_DEFAULT}, ${DisplayMetrics.DENSITY_DEVICE_STABLE}; $displayMetrics")
-        Logcat.msg("width $physicalWidth, differ density $designDensity - $screenDensity = $differDip")
-        Logcat.msg("width $physicalWidth, differ dpi $designDpi - $screenDpi = $differDpi")
+        Logcat.msg("physical $physicalWidth x $physicalHeight, screen $screenWidth x $screenHeight, smallest $smallestWidth, calc $calcWidth")
+        Logcat.msg("display $calcWidth, $smallestWidth, $designWidth, $display")
+        Logcat.msg("display metrics ${DisplayMetrics.DENSITY_DEVICE_STABLE}, ${displayMetrics.densityDpi}; $displayMetrics")
+        Logcat.msg("differ width $smallestWidth - $designWidth = $differWidth, ${differWidth / designWidth}")
+        Logcat.msg("differ density $designDensity - $screenDensity = $differDip")
+        Logcat.msg("differ dpi $designDpi - $screenDpi = $differDpi")
         // 避免差异过大比较屏幕和设计稿，超过指定系数使用系统默认值
-        // abs(screenWidth - designWidth) < 60
-        // abs(screenWidth - designWidth) / designWidth < 0.15
+        // abs(smallestWidth - designWidth) < 65
+        // abs(smallestWidth - designWidth) / designWidth < 0.15
         // abs(designDensity - screenDensity) < 0.6
         // abs(designDpi - screenDpi) < 96
-        if (abs(screenWidth - designWidth) < 60) {
+        if (abs(smallestWidth - designWidth) < 65) {
             newConfiguration.densityDpi = designDpi
             fun calcSize(size: Int) = (size * screenDensity / designDensity).roundToInt()
             newConfiguration.smallestScreenWidthDp = calcSize(configuration.smallestScreenWidthDp)
             newConfiguration.screenWidthDp = calcSize(configuration.screenWidthDp)
             newConfiguration.screenHeightDp = calcSize(configuration.screenHeightDp)
+            Logcat.msg("conf new $newConfiguration")
         }
         return newConfiguration
     }

@@ -1,14 +1,14 @@
 package com.example.thinking
 
-import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
-import android.os.Build
-import android.os.Process
-import androidx.startup.AppInitializer
+import android.content.ContextParams
+import android.content.res.Configuration
+import android.os.Bundle
+import android.view.Display
 import com.example.thinking.util.ContextInitializer
 import com.example.thinking.util.Logcat
-import com.example.thinking.util.TimeUtil
+import com.example.thinking.util.initializeComponent
 
 class AppApplication : Application() {
 
@@ -22,28 +22,72 @@ class AppApplication : Application() {
     }
 
     override fun attachBaseContext(base: Context?) {
-        Logcat.msg(TimeUtil.formatCurrent("MM-dd HH:mm:ss.SSS"))
+        Logcat.printTime()
         super.attachBaseContext(base)
     }
 
+    override fun getParams(): ContextParams? {
+        Logcat.printTime()
+        return super.getParams()
+    }
+
+    override fun createPackageContext(packageName: String?, flags: Int): Context? {
+        Logcat.printTime()
+        return super.createPackageContext(packageName, flags)
+    }
+
+    override fun createContextForSplit(splitName: String?): Context? {
+        Logcat.printTime()
+        return super.createContextForSplit(splitName)
+    }
+
+    override fun createConfigurationContext(overrideConfiguration: Configuration): Context? {
+        Logcat.printTime()
+        return super.createConfigurationContext(overrideConfiguration)
+    }
+
+    override fun createDisplayContext(display: Display): Context? {
+        Logcat.printTime()
+        return super.createDisplayContext(display)
+    }
+
+    override fun createDeviceContext(deviceId: Int): Context {
+        Logcat.printTime()
+        return super.createDeviceContext(deviceId)
+    }
+
+    override fun createWindowContext(type: Int, options: Bundle?): Context {
+        Logcat.printTime()
+        return super.createWindowContext(type, options)
+    }
+
+    override fun createWindowContext(display: Display, type: Int, options: Bundle?): Context {
+        Logcat.printTime()
+        return super.createWindowContext(display, type, options)
+    }
+
+    override fun createContext(contextParams: ContextParams): Context {
+        Logcat.printTime()
+        return super.createContext(contextParams)
+    }
+
+    override fun createAttributionContext(attributionTag: String?): Context {
+        Logcat.printTime()
+        return super.createAttributionContext(attributionTag)
+    }
+
+    override fun createDeviceProtectedStorageContext(): Context? {
+        return super.createDeviceProtectedStorageContext()
+    }
+
+
     override fun onCreate() {
-        Logcat.msg(TimeUtil.formatCurrent("MM-dd HH:mm:ss.SSS"))
-        AppInitializer.getInstance(this).initializeComponent(ContextInitializer::class.java)
-        Logcat.msg("${processName(this)}")
+        Logcat.printTime()
+        initializeComponent<ContextInitializer>()
         super.onCreate()
     }
 
-    private fun processName(context: Context): String? {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            return Application.getProcessName()
-        } else {
-            val manager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-            for (process in manager.runningAppProcesses) {
-                if (process.pid == Process.myPid()) {
-                    return process.processName
-                }
-            }
-        }
-        return null
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
     }
 }

@@ -1,9 +1,31 @@
 package com.example.thinking.util
 
 import android.app.Activity
+import android.app.ActivityManager
+import android.app.Application
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
+import android.os.Build
+import android.os.Process
+import androidx.startup.AppInitializer
+import androidx.startup.Initializer
+
+val Context?.processName: String?
+    get(): String? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            Application.getProcessName()
+        } else {
+            this ?: return null
+            val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            for (process in manager.runningAppProcesses) {
+                if (process.pid == Process.myPid()) {
+                    return process.processName
+                }
+            }
+            null
+        }
+    }
 
 fun Context.contextEach(action: (context: Context) -> Unit) {
     var context: Context? = this
@@ -34,6 +56,9 @@ fun Context.contextIf(predicate: (context: Context) -> Boolean): Context? {
     }
     return null
 }
+
+inline fun <reified T : Initializer<T>> Context.initializeComponent(): T =
+    AppInitializer.getInstance(this).initializeComponent(T::class.java)
 
 inline fun <reified T : Activity> Context.startActivity() {
     startActivity(intent<T>())

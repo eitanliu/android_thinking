@@ -5,11 +5,8 @@ import androidx.lifecycle.Observer
 import java.io.Closeable
 
 abstract class LiveDataObserver<T>(
-    private val observable: LiveData<T>,
+    val observable: LiveData<T>,
 ) : CloseableObserver<T> {
-    init {
-        observable.observeForever(this)
-    }
 
     override fun close() {
         observable.removeObserver(this)

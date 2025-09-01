@@ -1,6 +1,6 @@
 package com.example.thinking.binding.data
 
-open class EqualsLiveData<T> : SafetyLiveData<T> {
+open class LastEqualsData<T> : LastLiveData<T> {
 
     constructor(value: T) : super(value)
 

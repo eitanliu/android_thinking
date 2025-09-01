@@ -2,9 +2,11 @@ package com.example.thinking.binding.data
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import java.io.Closeable
+import com.example.thinking.binding.CloseableObserver
+import com.example.thinking.binding.LiveDataObserver
 import java.util.concurrent.atomic.AtomicBoolean
 
 open class SingleLiveData<T> : SafetyLiveData<T> {
@@ -18,16 +20,20 @@ open class SingleLiveData<T> : SafetyLiveData<T> {
     constructor() : super()
 
     @MainThread
-    fun observe(owner: ViewModel, single: Boolean, observer: Observer<in T>) {
-        super.observeForever(ObserverWrapper(single, observer).also {
+    fun observe(
+        owner: ViewModel, single: Boolean, observer: Observer<in T>
+    ): CloseableObserver<T> {
+        return observeCloseable(single, observer).also {
             owner.addCloseable(it)
-        })
+        }
     }
 
     @MainThread
-    fun observe(owner: LifecycleOwner, single: Boolean, observer: Observer<in T>) {
+    open fun observe(
+        owner: LifecycleOwner, single: Boolean, observer: Observer<in T>
+    ) {
         if (single) {
-            super.observe(owner, ObserverWrapper(single, observer))
+            super.observe(owner, ObserverWrapper(this, single, observer))
         } else {
             super.observe(owner, observer)
         }
@@ -35,9 +41,11 @@ open class SingleLiveData<T> : SafetyLiveData<T> {
     }
 
     @MainThread
-    fun observeForever(single: Boolean, observer: Observer<in T>) {
+    open fun observeForever(
+        single: Boolean, observer: Observer<in T>
+    ) {
         if (single) {
-            super.observeForever(ObserverWrapper(single, observer))
+            super.observeForever(ObserverWrapper(this, single, observer))
         } else {
             super.observeForever(observer)
         }
@@ -45,14 +53,25 @@ open class SingleLiveData<T> : SafetyLiveData<T> {
     }
 
     @MainThread
-    override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
-        super.observe(owner, ObserverWrapper(true, observer))
+    open fun observeCloseable(
+        single: Boolean = true, observer: Observer<in T>
+    ): CloseableObserver<T> {
+        val wrapper = ObserverWrapper(this, single, observer)
+        super.observeForever(wrapper)
+        return wrapper
     }
 
-    override fun observeForever(observer: Observer<in T>) {
-        super.observeForever(ObserverWrapper(true, observer))
+    @MainThread
+    final override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
+        observe(owner, true, observer)
     }
 
+    @MainThread
+    final override fun observeForever(observer: Observer<in T>) {
+        observeForever(true, observer)
+    }
+
+    @MainThread
     override fun removeObserver(observer: Observer<in T>) {
         val wrapper = observers.remove(observer)
         if (wrapper != null) {
@@ -69,9 +88,10 @@ open class SingleLiveData<T> : SafetyLiveData<T> {
     }
 
     inner class ObserverWrapper(
+        observable: LiveData<T>,
         private val single: Boolean,
-        private val observer: Observer<in T>
-    ) : Observer<T>, Closeable {
+        private val observer: Observer<in T>,
+    ) : LiveDataObserver<T>(observable) {
         init {
             observers[observer] = this
         }

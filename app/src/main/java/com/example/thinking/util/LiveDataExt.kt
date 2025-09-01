@@ -24,6 +24,10 @@ fun <T> LiveData<T>.observeCloseable(
     observer: Observer<in T>
 ): CloseableObserver<in T> {
     return object : LiveDataObserver<T>(this) {
+        init {
+            observable.observeForever(this)
+        }
+
         override fun onChanged(value: T) {
             observer.onChanged(value)
         }

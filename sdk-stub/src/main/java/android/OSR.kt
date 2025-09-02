@@ -1,6 +1,6 @@
 @file:Suppress("ClassName", "ConstPropertyName", "DEPRECATED_JAVA_ANNOTATION")
 
-package com.example.thinking.util
+package android
 
 import java.lang.Deprecated
 

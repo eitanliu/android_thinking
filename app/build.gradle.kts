@@ -119,7 +119,7 @@ dependencies {
     coreLibraryDesugaring(libs.desugar.jdk.libs)
     // compileOnly(files("sources/android-35.jar"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
-    // compileOnly(project(":sdk-stub"))
+    compileOnly(project(":sdk-stub"))
 
     // android
     implementation(libs.androidx.appcompat)

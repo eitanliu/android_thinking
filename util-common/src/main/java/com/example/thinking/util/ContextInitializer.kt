@@ -15,19 +15,18 @@ class ContextInitializer : Initializer<ContextInitializer> {
 
     companion object {
         const val TAG = "ContextInitializer"
-        private var _context: WeakReference<Context?> = WeakReference(null)
+        private var ref: WeakReference<ContextInitializer?> = WeakReference(null)
+
+        val context: Context get() = ref.get()?.context ?: throw ContextNotInitializedException()
+
+        val contextOrNull get() = ref.get()?.contextOrNull
 
         @JvmStatic
-        val context: Context get() = _context.get() ?: throw ContextNotInitializedException()
-
-        @JvmStatic
-        fun init(context: Context) {
-            Log.d(TAG, "initContext: ${processName(context)}, $context")
-            AppInitializer.getInstance(context).initializeComponent(ContextInitializer::class.java)
-        }
-
-        private fun initContext(context: Context) {
-            _context = WeakReference(context.applicationContext)
+        fun init(context: Context): ContextInitializer {
+            val appInitializer = AppInitializer.getInstance(context)
+            val instance = appInitializer.initializeComponent(ContextInitializer::class.java)
+            ref = WeakReference(instance)
+            return instance
         }
 
         private fun processName(context: Context): String? {
@@ -45,8 +44,15 @@ class ContextInitializer : Initializer<ContextInitializer> {
         }
     }
 
+    private var _context: Context? = null
+
+    val context get() = _context ?: throw ContextNotInitializedException()
+
+    val contextOrNull get() = _context
+
     override fun create(context: Context): ContextInitializer {
-        initContext(context)
+        Log.d(TAG, "initContext: ${processName(context)}, $context", Throwable())
+        _context = context
         return this
     }
 

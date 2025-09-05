@@ -1,8 +1,17 @@
-@file:Suppress("NO_TAIL_CALLS_FOUND", "NON_TAIL_RECURSIVE_CALL")
+@file:Suppress("NO_TAIL_CALLS_FOUND", "NON_TAIL_RECURSIVE_CALL", "NOTHING_TO_INLINE")
 
 package com.example.thinking.util
 
+import android.content.Context
 import java.io.File
+
+inline fun Context.randomCacheFile(
+    prefix: String = "tamp_", suffix: String = "",
+    time: Boolean = true, uuid: Boolean = true,
+    external: Boolean = false,
+) = FileUtil.randomCacheFile(
+    this, prefix, suffix, time, uuid, external
+)
 
 tailrec fun File.forEachFolder(action: ((total: Long, file: File) -> Unit)?): Long {
     var size = 0L

@@ -37,14 +37,15 @@ object FileUtil {
         return result4.setScale(2, RoundingMode.HALF_UP).toPlainString() + "TB"
     }
 
-    tailrec fun Context.randomCacheFile(
+    tailrec fun randomCacheFile(
+        context: Context,
         prefix: String = "tamp_", suffix: String = "",
         time: Boolean = true, uuid: Boolean = true,
         external: Boolean = false,
     ): File = run {
-        val dir = if (external) externalCacheDir else cacheDir
+        val dir = if (external) context.externalCacheDir else context.cacheDir
         File(dir, randomName(prefix, suffix, time, uuid)).let { file ->
-            if (file.exists()) randomCacheFile(prefix, suffix, time, uuid, external)
+            if (file.exists()) randomCacheFile(context, prefix, suffix, time, uuid, external)
             else file
         }
     }

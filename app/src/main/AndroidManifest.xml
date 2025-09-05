@@ -58,6 +58,7 @@
         <activity
             android:name=".app.TestActivity"
             android:exported="true"
+            android:launchMode=""
             android:theme="@style/AppTheme.Transparent" />
 
         <activity

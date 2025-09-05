@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "org.android"
+    namespace = "android.os"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

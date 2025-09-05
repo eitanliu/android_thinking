@@ -19,7 +19,7 @@ fun Intent.singleTop() = apply {
  * 栈内复用
  * 回调 onNewIntent()
  */
-fun Intent.singleTasks() = apply {
+fun Intent.singleTask() = apply {
     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
     addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
 }
@@ -28,7 +28,7 @@ fun Intent.singleTasks() = apply {
  * 清空栈顶、自身
  * 回调 onCreate()
  */
-fun Intent.clearTops() = apply {
+fun Intent.clearTop() = apply {
     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 }
@@ -38,7 +38,7 @@ fun Intent.clearTops() = apply {
  * 销毁 singleInstance 模式外的全部 Activity
  * 回调 onCreate()
  */
-fun Intent.clearTasks() = apply {
+fun Intent.clearTask() = apply {
     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 }
@@ -90,7 +90,7 @@ inline fun <reified T> Intent.getParcelableArrayCompat(
 } else getParcelableArrayExtra(key) as? Array<T>
 
 @Suppress("DEPRECATION")
-inline fun <reified T: Parcelable> Intent.getParcelableArrayListCompat(
+inline fun <reified T : Parcelable> Intent.getParcelableArrayListCompat(
     key: String
 ) = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
     getParcelableArrayListExtra<T>(key, T::class.java)

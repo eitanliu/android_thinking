@@ -4,15 +4,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-abstract class ItemAdapter<T, VH : ItemViewHolder> : RecyclerView.Adapter<VH>() {
+abstract class ItemAdapter<T, VH : LifecycleViewHolder> : RecyclerView.Adapter<VH>() {
 
     private var itemClickListener: ItemClickListener? = null
-    private var itemOnBindListener: ItemOnBindListener<VH>? = null
+    private var onItemBindListener: OnItemBindListener<VH>? = null
 
     open operator fun get(position: Int): T = getItem(position)
 
-    open fun getItemOrNull(position: Int): T? =
-        if (position < itemCount) getItem(position) else null
+
+    open fun getItemOrNull(position: Int): T? = try {
+        if (position >= 0 && position < itemCount) getItem(position) else null
+    } catch (_: Throwable) {
+        null
+    }
 
     abstract fun getItem(position: Int): T
 
@@ -27,16 +31,16 @@ abstract class ItemAdapter<T, VH : ItemViewHolder> : RecyclerView.Adapter<VH>() 
         if (itemClickListener != null) {
             holder.itemView.setOnClickListener { itemClickListener?.invoke(it, position) }
         }
-        if (holder is ItemModelBinding<*>) {
+        if (holder is ItemBinding<*>) {
             @Suppress("UNCHECKED_CAST")
-            (holder as ItemModelBinding<T>).bind(getItem(position))
+            (holder as ItemBinding<T>).bind(getItem(position))
         }
-        itemOnBindListener?.invoke(this, holder, position)
+        onItemBindListener?.invoke(this, holder, position)
     }
 
     override fun onViewRecycled(holder: VH) {
         holder.onDetachedLifecycle()
-        if (holder is ItemModelBinding<*>) {
+        if (holder is ItemBinding<*>) {
             holder.unbind()
         }
     }
@@ -87,8 +91,8 @@ abstract class ItemAdapter<T, VH : ItemViewHolder> : RecyclerView.Adapter<VH>() 
         itemClickListener = listener
     }
 
-    fun setOnItemBindListener(listener: ItemOnBindListener<VH>?) = apply {
-        itemOnBindListener = listener
+    fun setOnItemBindListener(listener: OnItemBindListener<VH>?) = apply {
+        onItemBindListener = listener
     }
 
 }

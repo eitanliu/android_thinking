@@ -3,13 +3,41 @@
 package com.example.thinking.util
 
 import android.os.Build
+import androidx.core.content.res.ResourcesCompat
 
 object OS {
 
     /**
      * [android.R](https://developer.android.com/reference/android/R)
      */
-    // typealias R = OSR
+    object R {
+        const val anim = "anim"
+        const val animator = "animator"
+        const val array = "array"
+        const val attr = "attr"
+        const val color = "color"
+        const val dimen = "dimen"
+        const val drawable = "drawable"
+        const val id = "id"
+        const val integer = "integer"
+        const val interpolator = "interpolator"
+        const val layout = "layout"
+        const val menu = "menu"
+        const val mipmap = "mipmap"
+        const val string = "string"
+        const val style = "style"
+        const val transition = "transition"
+
+        fun getId(type: String, name: String): Int {
+            try {
+                val clazz = Class.forName("android.R$$type")
+                val f = clazz.getField(name)
+                return f.getInt(null)
+            } catch (_: Throwable) {
+            }
+            return ResourcesCompat.ID_NULL
+        }
+    }
 
     /**
      * [android.os.Build.VERSION_CODES](https://developer.android.com/reference/android/os/Build.VERSION_CODES)

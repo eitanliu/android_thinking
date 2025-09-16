@@ -16,5 +16,5 @@ object IntentUtil {
     /**
      * 桌面主页
      */
-    val launcherHome = launcherIntent.clearTasks()
+    val launcherHome = launcherIntent.clearTask()
 }

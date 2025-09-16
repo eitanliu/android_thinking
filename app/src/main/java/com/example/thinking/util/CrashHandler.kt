@@ -19,7 +19,7 @@ open class CrashHandler<T>(
     override fun uncaughtException(t: Thread, e: Throwable) {
         if (handleException(e)) {
             if (restart) {
-                val intent = Intent(context, activityClass).putExtra("crash", true).clearTops()
+                val intent = Intent(context, activityClass).putExtra("crash", true).clearTop()
                 val flags = PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
                 val pendingIntent = PendingIntent.getActivity(
                     context, 0, intent, flags

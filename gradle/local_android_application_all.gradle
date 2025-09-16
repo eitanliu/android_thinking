@@ -1,0 +1,48 @@
+Closure<String> _file = { String path ->
+    return new File(System.properties["user.home"], path)
+}
+
+//解析properties文件
+Closure loadProperties = { File f, Project project = project ->
+    project.with {
+        // println "loadProperties: ${name}, ${f.canonicalPath}"
+        new Properties().with { if (f.isFile()) f.withInputStream { load(it) }; it }
+    }
+}
+
+def localProperties = loadProperties(file("local.properties"))
+
+println("$project configure android.application local ${_file(".gradle")}")
+
+android {
+    lintOptions {
+        checkOnly.clear()
+        // sources lint
+        disable("ObsoleteSdkInt")
+        // xml lint
+        disable("HardcodedText", "SmallSp", "SpUsage")
+    }
+
+    def debugKeyFile = _file(".gradle/debug.jks")
+    println("$project configure android.application local ${debugKeyFile.exists()} ${debugKeyFile}")
+
+    signingConfigs {
+        if (debugKeyFile.exists()) config {
+            storeFile debugKeyFile
+            storePassword "debug1"
+            keyAlias "debug"
+            keyPassword "debug1"
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            if (debugKeyFile.exists()) signingConfig signingConfigs.config
+        }
+
+        release {
+            if (debugKeyFile.exists()) signingConfig signingConfigs.config
+        }
+    }
+}

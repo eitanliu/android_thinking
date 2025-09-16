@@ -9,7 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.example.thinking.R
 import com.example.thinking.base.adapter.ItemListAdapter
-import com.example.thinking.base.adapter.ModelBindingViewHolder
+import com.example.thinking.base.adapter.ItemBindingViewHolder
 import com.example.thinking.databinding.ActivityTestBinding
 import com.example.thinking.databinding.SimpleListItemBinding
 import com.example.thinking.util.Logcat
@@ -77,7 +77,7 @@ class TestActivity : AppCompatActivity() {
 
         class Holder(
             parent: ViewGroup
-        ) : ModelBindingViewHolder<ActionData, SimpleListItemBinding>(
+        ) : ItemBindingViewHolder<ActionData, SimpleListItemBinding>(
             SimpleListItemBinding.inflate(parent.inflater, parent, false)
         ) {
             override fun bind(item: ActionData) {

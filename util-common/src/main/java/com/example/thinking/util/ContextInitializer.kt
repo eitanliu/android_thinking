@@ -25,7 +25,6 @@ class ContextInitializer : Initializer<ContextInitializer> {
         fun init(context: Context): ContextInitializer {
             val appInitializer = AppInitializer.getInstance(context)
             val instance = appInitializer.initializeComponent(ContextInitializer::class.java)
-            ref = WeakReference(instance)
             return instance
         }
 
@@ -52,6 +51,7 @@ class ContextInitializer : Initializer<ContextInitializer> {
 
     override fun create(context: Context): ContextInitializer {
         Log.d(TAG, "initContext: ${processName(context)}, $context", Throwable())
+        ref = WeakReference(this)
         _context = context
         return this
     }

@@ -5,6 +5,8 @@ import android.content.ContextParams
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.graphics.Point
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Display
@@ -177,6 +179,21 @@ class DisplayActivity : AppCompatActivity() {
         val differWidth = smallestWidth - designWidth
         val differDip = designDensity - screenDensity
         val differDpi = designDpi - screenDpi
+        val smallestSize = Point()
+        val largestSize = Point()
+        val rectSize = Rect()
+        val size = Point()
+        val metrics = DisplayMetrics()
+        val realSize = Point()
+        val realMetrics = DisplayMetrics()
+        display.getCurrentSizeRange(smallestSize, largestSize)
+        display.getRectSize(rectSize)
+        display.getSize(size)
+        display.getMetrics(metrics)
+        display.getRealSize(realSize)
+        display.getRealMetrics(realMetrics)
+        Logcat.msg("display size $rectSize, $size, $realSize, $metrics, $realMetrics")
+        Logcat.msg("display smallest $smallestSize, largest $largestSize, ${display.width} ${display.height}")
         Logcat.msg("physical $physicalWidth x $physicalHeight, screen $screenWidth x $screenHeight, smallest $smallestWidth, calc $calcWidth")
         Logcat.msg("display $calcWidth, $smallestWidth, $designWidth, $display")
         Logcat.msg("display metrics ${DisplayMetrics.DENSITY_DEVICE_STABLE}, ${displayMetrics.densityDpi}; $displayMetrics")

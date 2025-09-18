@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.thinking.R
 import com.example.thinking.databinding.ActivityDisplayBinding
+import com.example.thinking.util.DisplayAdapter
 import com.example.thinking.util.Logcat
 import com.example.thinking.util.navigationBarHeight
 import com.example.thinking.util.statusBarHeight
@@ -37,7 +38,9 @@ class DisplayActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout(),
+            )
             val statusBarHeight = statusBarHeight
             Logcat.msg("statusBarHeight: $statusBarHeight, ${systemBars.top}", Logcat.E)
             val left = systemBars.left
@@ -47,13 +50,32 @@ class DisplayActivity : AppCompatActivity() {
             v.setPadding(left, top, right, bottom)
             insets
         }
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+        // requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
         resources.configuration.orientation
         val display = ContextCompat.getDisplayOrDefault(this)
         display.rotation
         val statusBarHeight = statusBarHeight
         val navigationBarHeight = navigationBarHeight
-        Logcat.msg("display: ${display.rotation}, $statusBarHeight, $navigationBarHeight, $display")
+        Logcat.msg("display: ${display.rotation}, $statusBarHeight, $navigationBarHeight, $display $this")
+        binding.btnTest.setOnClickListener {
+            val displayAdapter = DisplayAdapter(this)
+            val designConfig = displayAdapter.calcDesignConfiguration(
+                360 //displayAdapter.getDesignWidth<TestActivity>()
+            ) { config ->
+                Logcat.msg(config.run { "design width $designWidth, $screenWidth, dpi $designDpi, $screenDpi, density $designDensity, $screenDensity" })
+                Logcat.msg("diff width ${config.designWidth - config.screenWidth}, dpi ${config.designDpi - config.screenDpi}, density ${config.designDensity - config.screenDensity}")
+                // abs(config.designWidth - config.screenWidth) / designWidth < 0.15
+                // abs(config.designDensity - config.screenDensity) < 0.6
+                // abs(config.designDpi - config.screenDpi) < 96
+                abs(config.designWidth - config.screenWidth) < 65
+            }
+            Logcat.msg("design conf ${designConfig?.run { "$densityDpi, $smallestScreenWidthDp, $screenWidthDp, $screenHeightDp" }} $designConfig")
+            if (designConfig != null) {
+                resources.updateConfiguration(designConfig, null)
+                // resources.configuration.updateFrom(designConfig)
+            }
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -138,9 +160,9 @@ class DisplayActivity : AppCompatActivity() {
     }
 
     override fun attachBaseContext(newBase: Context) {
-        val conf = updateConfiguration(newBase)
+        // val conf = updateConfiguration(newBase)
         // Plan 1：使用 ContextThemeWrapper.applyOverrideConfiguration
-        applyOverrideConfiguration(conf)
+        // applyOverrideConfiguration(conf)
         // Plan 2：使用 Context.createConfigurationContext
         // val context = newBase.createConfigurationContext(conf)
         // return super.attachBaseContext(context)
@@ -148,8 +170,30 @@ class DisplayActivity : AppCompatActivity() {
         // newBase.resources.updateConfiguration(conf, null)
         // Plan 4：使用 Configuration.updateFrom 或 setTo
         // newBase.resources.configuration.updateFrom(conf)
+        val designConfig = designConfiguration(newBase)
+        if (designConfig != null) {
+            applyOverrideConfiguration(designConfig)
+            // newBase.resources.updateConfiguration(designConfig, null)
+            // newBase.resources.configuration.updateFrom(designConfig)
+        }
         Logcat.msg("attachBaseContext $newBase", Logcat.E)
         return super.attachBaseContext(newBase)
+    }
+
+    private fun designConfiguration(context: Context): Configuration? {
+        val displayAdapter = DisplayAdapter(context)
+        val designConfig = displayAdapter.calcDesignConfiguration(
+            420 //displayAdapter.getDesignWidth<TestActivity>()
+        ) { config ->
+            Logcat.msg(config.run { "design width $designWidth, $screenWidth, dpi $designDpi, $screenDpi, density $designDensity, $screenDensity" })
+            Logcat.msg("diff width ${config.designWidth - config.screenWidth}, dpi ${config.designDpi - config.screenDpi}, density ${config.designDensity - config.screenDensity}")
+            // abs(config.designWidth - config.screenWidth) / designWidth < 0.15
+            // abs(config.designDensity - config.screenDensity) < 0.6
+            // abs(config.designDpi - config.screenDpi) < 96
+            abs(config.designWidth - config.screenWidth) < 65
+        }
+        Logcat.msg("design conf ${designConfig?.run { "$densityDpi, $smallestScreenWidthDp, $screenWidthDp, $screenHeightDp" }} $designConfig")
+        return designConfig
     }
 
     private fun updateConfiguration(context: Context): Configuration {
@@ -211,7 +255,7 @@ class DisplayActivity : AppCompatActivity() {
             newConfiguration.smallestScreenWidthDp = calcSize(configuration.smallestScreenWidthDp)
             newConfiguration.screenWidthDp = calcSize(configuration.screenWidthDp)
             newConfiguration.screenHeightDp = calcSize(configuration.screenHeightDp)
-            Logcat.msg("conf new $newConfiguration")
+            Logcat.msg("conf new ${newConfiguration.run { "$densityDpi, $smallestScreenWidthDp, $screenWidthDp, $screenHeightDp" }} $newConfiguration")
         }
         return newConfiguration
     }

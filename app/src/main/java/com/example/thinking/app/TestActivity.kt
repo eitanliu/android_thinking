@@ -13,6 +13,7 @@ import com.example.thinking.base.adapter.ItemBindingViewHolder
 import com.example.thinking.databinding.ActivityTestBinding
 import com.example.thinking.databinding.SimpleListItemBinding
 import com.example.thinking.util.Logcat
+import com.example.thinking.util.OS
 import com.example.thinking.util.inflater
 import com.example.thinking.util.rootWindowInsetsCompat
 import com.example.thinking.util.startActivity
@@ -35,6 +36,18 @@ class TestActivity : AppCompatActivity() {
         listOf(
             ActionData("DisplayActivity") {
                 startActivity<DisplayActivity>()
+            },
+            ActionData("Dump String") {
+                for (key in OS.R.stringNames) {
+                    val value = OS.getStringOrNull(key)
+                    Logcat.msg("$key, $value")
+                }
+            },
+            ActionData("Dump StringArray") {
+                for (key in OS.R.stringArrayNames) {
+                    val value = OS.getStringArrayOrNull(key)
+                    Logcat.msg("$key, ${value?.joinToString()}")
+                }
             },
         )
     }

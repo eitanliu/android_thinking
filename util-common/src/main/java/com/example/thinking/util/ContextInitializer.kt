@@ -50,7 +50,7 @@ class ContextInitializer : Initializer<ContextInitializer> {
     val contextOrNull get() = _context
 
     override fun create(context: Context): ContextInitializer {
-        Log.d(TAG, "initContext: ${processName(context)}, $context", Throwable())
+        Log.d(TAG, "initContext: ${processName(context)}, $context")
         ref = WeakReference(this)
         _context = context
         return this

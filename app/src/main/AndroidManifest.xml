@@ -34,6 +34,10 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
 
+        <meta-data
+            android:name="design_width"
+            android:value="360" />
+
         <!-- https://stackoverflow.com/questions/52786963/unable-to-get-provider-com-google-android-gms-ads-mobileadsinitprovider-java-la -->
         <!-- https://developers.google.com/admob/android/quick-start#import_the_mobile_ads_sdk -->
         <!-- https://developers.google.com/admob/android/test-ads -->

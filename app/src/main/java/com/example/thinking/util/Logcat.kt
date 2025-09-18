@@ -38,7 +38,7 @@ object Logcat {
     }
 
     fun printTime() {
-        msg("${TimeUtil.formatCurrent("MM-dd HH:mm:ss.SSS")} $processName")
+        msg("trace time ${TimeUtil.formatCurrent("MM-dd HH:mm:ss.SSS")} $processName")
     }
 
     fun msg(

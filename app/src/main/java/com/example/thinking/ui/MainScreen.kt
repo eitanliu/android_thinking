@@ -1,6 +1,8 @@
 package com.example.thinking.ui
 
 import android.content.Context
+import android.view.LayoutInflater
+import android.widget.TextView
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -27,6 +29,7 @@ import com.example.thinking.MainActivity
 import com.example.thinking.app.DisplayActivity
 import com.example.thinking.app.TestActivity
 import com.example.thinking.document.DocumentScannerActivity
+import com.example.thinking.util.OS
 import com.example.thinking.util.catchException
 import com.example.thinking.util.startActivity
 

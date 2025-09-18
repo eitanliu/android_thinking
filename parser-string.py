@@ -27,7 +27,6 @@ def parse_xml_strings(file_path):
     return strings, string_arrays
 
 def main():
-    # 修改: 将file_path改为列表形式，并添加donottranslate-cldr.xml文件
     file_paths = [
         '~/Library/Android/sdk/platforms/android-35/data/res/values/strings.xml',
         '~/Library/Android/sdk/platforms/android-35/data/res/values/donottranslate-cldr.xml'
@@ -38,7 +37,7 @@ def main():
     all_string_arrays = []
     
     for file_path in file_paths:
-        # 修改: 使用os.path.expanduser来正确解析用户目录路径
+        # 使用os.path.expanduser来正确解析用户目录路径
         expanded_file_path = os.path.expanduser(file_path)
         
         try:
@@ -50,6 +49,10 @@ def main():
             print(f"文件未找到: {file_path}")
         except ET.ParseError as e:
             print(f"XML解析错误: {e}")
+
+    # 对结果进行去重处理，保持原有顺序
+    all_strings = list(dict.fromkeys(all_strings))
+    all_string_arrays = list(dict.fromkeys(all_string_arrays))
 
     # 输出格式为使用双引号的列表形式
     # print(f"String names: {json.dumps(all_strings)}")

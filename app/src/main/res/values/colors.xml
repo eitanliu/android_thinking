@@ -82,4 +82,25 @@
     <color name="white_5">#0DFFFFFF</color>
     <!-- 0% 全透明 -->
     <color name="white_0">#00FFFFFF</color>
+    <color name="alpha_100">@color/black</color>
+    <color name="alpha_95">@color/black_95</color>
+    <color name="alpha_90">@color/black_90</color>
+    <color name="alpha_85">@color/black_85</color>
+    <color name="alpha_80">@color/black_80</color>
+    <color name="alpha_75">@color/black_75</color>
+    <color name="alpha_70">@color/black_70</color>
+    <color name="alpha_65">@color/black_65</color>
+    <color name="alpha_60">@color/black_60</color>
+    <color name="alpha_55">@color/black_55</color>
+    <color name="alpha_50">@color/black_50</color>
+    <color name="alpha_45">@color/black_45</color>
+    <color name="alpha_40">@color/black_40</color>
+    <color name="alpha_35">@color/black_35</color>
+    <color name="alpha_30">@color/black_30</color>
+    <color name="alpha_25">@color/black_25</color>
+    <color name="alpha_20">@color/black_20</color>
+    <color name="alpha_15">@color/black_15</color>
+    <color name="alpha_10">@color/black_10</color>
+    <color name="alpha_5">@color/black_5</color>
+    <color name="alpha_0">@color/black_0</color>
 </resources>

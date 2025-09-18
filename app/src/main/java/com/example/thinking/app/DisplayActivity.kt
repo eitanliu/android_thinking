@@ -16,11 +16,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.DisplayCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.example.thinking.R
 import com.example.thinking.databinding.ActivityDisplayBinding
 import com.example.thinking.util.DisplayAdapter
 import com.example.thinking.util.Logcat
 import com.example.thinking.util.navigationBarHeight
+import com.example.thinking.util.rootWindowInsetsCompat
+import com.example.thinking.util.startActivity
 import com.example.thinking.util.statusBarHeight
 import kotlin.math.abs
 import kotlin.math.max
@@ -31,6 +34,16 @@ class DisplayActivity : AppCompatActivity() {
 
     val binding by lazy {
         ActivityDisplayBinding.inflate(layoutInflater)
+    }
+
+    val actionList by lazy {
+        listOf(
+            TestActionData("TestActivity") {
+                startActivity<TestActivity>()
+            },
+            TestActionData("Status Bar", ::togglerStatusBar),
+            TestActionData("UpdateDisplay", ::updateDisplayAdapter),
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +63,9 @@ class DisplayActivity : AppCompatActivity() {
             v.setPadding(left, top, right, bottom)
             insets
         }
+        binding.list.adapter = TestActionAdapter().apply {
+            submitList(actionList)
+        }
         // requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
         resources.configuration.orientation
@@ -58,24 +74,6 @@ class DisplayActivity : AppCompatActivity() {
         val statusBarHeight = statusBarHeight
         val navigationBarHeight = navigationBarHeight
         Logcat.msg("display: ${display.rotation}, $statusBarHeight, $navigationBarHeight, $display $this")
-        binding.btnTest.setOnClickListener {
-            val displayAdapter = DisplayAdapter(this)
-            val designConfig = displayAdapter.calcDesignConfiguration(
-                360 //displayAdapter.getDesignWidth<TestActivity>()
-            ) { config ->
-                Logcat.msg(config.run { "design width $designWidth, $screenWidth, dpi $designDpi, $screenDpi, density $designDensity, $screenDensity" })
-                Logcat.msg("diff width ${config.designWidth - config.screenWidth}, dpi ${config.designDpi - config.screenDpi}, density ${config.designDensity - config.screenDensity}")
-                // abs(config.designWidth - config.screenWidth) / designWidth < 0.15
-                // abs(config.designDensity - config.screenDensity) < 0.6
-                // abs(config.designDpi - config.screenDpi) < 96
-                abs(config.designWidth - config.screenWidth) < 65
-            }
-            Logcat.msg("design conf ${designConfig?.run { "$densityDpi, $smallestScreenWidthDp, $screenWidthDp, $screenHeightDp" }} $designConfig")
-            if (designConfig != null) {
-                resources.updateConfiguration(designConfig, null)
-                // resources.configuration.updateFrom(designConfig)
-            }
-        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -258,5 +256,43 @@ class DisplayActivity : AppCompatActivity() {
             Logcat.msg("conf new ${newConfiguration.run { "$densityDpi, $smallestScreenWidthDp, $screenWidthDp, $screenHeightDp" }} $newConfiguration")
         }
         return newConfiguration
+    }
+
+    val windowInsetsController by lazy {
+        WindowInsetsControllerCompat(window, window.decorView)
+    }
+
+    val rootWindowInsetsCompat get() = binding.root.rootWindowInsetsCompat
+
+    fun togglerStatusBar() {
+        val windowInsetsCompat = rootWindowInsetsCompat
+        if (windowInsetsCompat != null) {
+            if (windowInsetsCompat.isVisible(WindowInsetsCompat.Type.statusBars())) {
+                windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
+            } else {
+                windowInsetsController.show(WindowInsetsCompat.Type.statusBars())
+            }
+        } else {
+            windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
+        }
+    }
+
+    fun updateDisplayAdapter() {
+        val displayAdapter = DisplayAdapter(this)
+        val designConfig = displayAdapter.calcDesignConfiguration(
+            360 //displayAdapter.getDesignWidth<TestActivity>()
+        ) { config ->
+            Logcat.msg(config.run { "design width $designWidth, $screenWidth, dpi $designDpi, $screenDpi, density $designDensity, $screenDensity" })
+            Logcat.msg("diff width ${config.designWidth - config.screenWidth}, dpi ${config.designDpi - config.screenDpi}, density ${config.designDensity - config.screenDensity}")
+            // abs(config.designWidth - config.screenWidth) / designWidth < 0.15
+            // abs(config.designDensity - config.screenDensity) < 0.6
+            // abs(config.designDpi - config.screenDpi) < 96
+            abs(config.designWidth - config.screenWidth) < 65
+        }
+        Logcat.msg("design conf ${designConfig?.run { "$densityDpi, $smallestScreenWidthDp, $screenWidthDp, $screenHeightDp" }} $designConfig")
+        if (designConfig != null) {
+            // resources.updateConfiguration(designConfig, null)
+            resources.configuration.updateFrom(designConfig)
+        }
     }
 }

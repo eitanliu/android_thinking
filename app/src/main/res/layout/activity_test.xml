@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".app.TestActivity">
 
@@ -14,20 +14,13 @@
         android:layout_height="wrap_content"
         android:background="#3000"
         android:text="Test"
-        android:textColor="#000"
-        android:textSize="8dp" />
-
-    <Button
-        android:id="@+id/btn_status_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Status Bar" />
+        android:textColor="#000" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white_50"
+        android:background="@color/alpha_50"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/simple_list_item" />

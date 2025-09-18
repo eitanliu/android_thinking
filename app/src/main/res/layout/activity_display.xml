@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".app.DisplayActivity">
 
@@ -12,45 +12,44 @@
         android:id="@+id/btn_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3000"
+        android:background="@color/alpha_20"
         android:text="Test"
         android:textColor="#000" />
-
-    <Button
-        android:id="@+id/btn_status_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Status Bar" />
 
     <View
         android:layout_width="100dp"
         android:layout_height="5dp"
-        android:background="@color/black_30" />
+        android:background="@color/alpha_30" />
 
     <View
         android:layout_width="150dp"
         android:layout_height="5dp"
-        android:background="@color/black_30" />
+        android:background="@color/alpha_30" />
 
     <View
         android:layout_width="200dp"
         android:layout_height="5dp"
-        android:background="@color/black_30" />
+        android:background="@color/alpha_30" />
 
     <View
         android:layout_width="250dp"
         android:layout_height="5dp"
-        android:background="@color/black_30" />
+        android:background="@color/alpha_30" />
 
     <View
         android:layout_width="300dp"
         android:layout_height="5dp"
-        android:background="@color/black_30" />
+        android:background="@color/alpha_30" />
 
     <View
         android:layout_width="350dp"
         android:layout_height="5dp"
-        android:background="@color/black_30" />
+        android:background="@color/alpha_30" />
+
+    <View
+        android:layout_width="360dp"
+        android:layout_height="5dp"
+        android:background="@color/alpha_30" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -59,12 +58,12 @@
         <View
             android:layout_width="400dp"
             android:layout_height="5dp"
-            android:background="@color/black_30" />
+            android:background="@color/alpha_30" />
 
         <View
             android:layout_width="20dp"
             android:layout_height="5dp"
-            android:background="@color/black_35" />
+            android:background="@color/alpha_35" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,22 +73,30 @@
         <View
             android:layout_width="410dp"
             android:layout_height="5dp"
-            android:background="@color/black_35" />
+            android:background="@color/alpha_35" />
 
         <View
             android:layout_width="10dp"
             android:layout_height="5dp"
-            android:background="@color/black_30" />
+            android:background="@color/alpha_30" />
     </LinearLayout>
 
     <View
         android:layout_width="420dp"
         android:layout_height="5dp"
-        android:background="@color/black_30" />
+        android:background="@color/alpha_30" />
 
     <View
         android:layout_width="450dp"
         android:layout_height="5dp"
-        android:background="@color/black_35" />
+        android:background="@color/alpha_35" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/simple_list_item" />
 
 </LinearLayout>

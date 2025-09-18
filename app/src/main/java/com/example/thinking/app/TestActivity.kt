@@ -1,20 +1,15 @@
 package com.example.thinking.app
 
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.example.thinking.R
-import com.example.thinking.base.adapter.ItemListAdapter
-import com.example.thinking.base.adapter.ItemBindingViewHolder
 import com.example.thinking.databinding.ActivityTestBinding
-import com.example.thinking.databinding.SimpleListItemBinding
 import com.example.thinking.util.Logcat
 import com.example.thinking.util.OS
-import com.example.thinking.util.inflater
 import com.example.thinking.util.rootWindowInsetsCompat
 import com.example.thinking.util.startActivity
 import com.example.thinking.util.statusBarHeight
@@ -34,21 +29,12 @@ class TestActivity : AppCompatActivity() {
 
     val actionList by lazy {
         listOf(
-            ActionData("DisplayActivity") {
+            TestActionData("Status Bar", ::togglerStatusBar),
+            TestActionData("DisplayActivity") {
                 startActivity<DisplayActivity>()
             },
-            ActionData("Dump String") {
-                for (key in OS.R.stringNames) {
-                    val value = OS.getStringOrNull(key)
-                    Logcat.msg("$key, $value")
-                }
-            },
-            ActionData("Dump StringArray") {
-                for (key in OS.R.stringArrayNames) {
-                    val value = OS.getStringArrayOrNull(key)
-                    Logcat.msg("$key, ${value?.joinToString()}")
-                }
-            },
+            TestActionData("Dump String", ::dumpString),
+            TestActionData("Dump StringArray", ::dumpStringArray),
         )
     }
 
@@ -57,7 +43,9 @@ class TestActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout(),
+            )
             val statusBarHeight = application.resources.statusBarHeight
             Logcat.msg("statusBarHeight: $statusBarHeight, ${systemBars.top}")
             val left = systemBars.left
@@ -67,42 +55,36 @@ class TestActivity : AppCompatActivity() {
             v.setPadding(left, top, right, bottom)
             insets
         }
-        binding.btnStatusBar.setOnClickListener {
-            val windowInsetsCompat = rootWindowInsetsCompat
-            if (windowInsetsCompat != null) {
-                if (windowInsetsCompat.isVisible(WindowInsetsCompat.Type.statusBars())) {
-                    windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
-                } else {
-                    windowInsetsController.show(WindowInsetsCompat.Type.statusBars())
-                }
-            } else {
-                windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
-            }
-        }
-        binding.list.adapter = Adapter().apply {
+        binding.list.adapter = TestActionAdapter().apply {
             submitList(actionList)
         }
     }
 
-    class ActionData(val name: String, val action: () -> Unit)
-
-    class Adapter : ItemListAdapter<ActionData, Adapter.Holder>() {
-
-        class Holder(
-            parent: ViewGroup
-        ) : ItemBindingViewHolder<ActionData, SimpleListItemBinding>(
-            SimpleListItemBinding.inflate(parent.inflater, parent, false)
-        ) {
-            override fun bind(item: ActionData) {
-                binding.title.text = item.name
-                itemView.setOnClickListener {
-                    item.action()
-                }
+    fun togglerStatusBar() {
+        val windowInsetsCompat = rootWindowInsetsCompat
+        if (windowInsetsCompat != null) {
+            if (windowInsetsCompat.isVisible(WindowInsetsCompat.Type.statusBars())) {
+                windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
+            } else {
+                windowInsetsController.show(WindowInsetsCompat.Type.statusBars())
             }
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-            return Holder(parent)
+        } else {
+            windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
         }
     }
+
+    fun dumpString() {
+        for (key in OS.R.stringNames) {
+            val value = OS.getStringOrNull(key)
+            Logcat.msg("$key, $value")
+        }
+    }
+
+    fun dumpStringArray() {
+        for (key in OS.R.stringArrayNames) {
+            val value = OS.getStringArrayOrNull(key)
+            Logcat.msg("$key, ${value?.joinToString()}")
+        }
+    }
+
 }

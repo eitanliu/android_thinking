@@ -38,9 +38,7 @@ class DisplayActivity : AppCompatActivity() {
 
     val actionList by lazy {
         listOf(
-            TestActionData("TestActivity") {
-                startActivity<TestActivity>()
-            },
+            TestActionData.activity<TestActivity>(this),
             TestActionData("Status Bar", ::togglerStatusBar),
             TestActionData("UpdateDisplay", ::updateDisplayAdapter),
         )

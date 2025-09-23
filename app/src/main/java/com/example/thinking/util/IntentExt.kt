@@ -7,6 +7,123 @@ import android.os.Build
 import android.os.Parcelable
 import java.io.Serializable
 
+const val FLAG_ACTIVITY_SINGLE_TASK = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+        Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+/**
+ * [Intent.FLAG_ACTIVITY_NO_ANIMATION]
+ */
+inline var Intent.isNoAnimation
+    get() = (flags and Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_NO_ANIMATION
+        } else {
+            flags and Intent.FLAG_ACTIVITY_NO_ANIMATION.inv()
+        }
+    }
+
+/**
+ * [Intent.FLAG_ACTIVITY_NO_HISTORY]
+ */
+inline var Intent.isNoHistory
+    get() = (flags and Intent.FLAG_ACTIVITY_NO_HISTORY) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_NO_HISTORY
+        } else {
+            flags and Intent.FLAG_ACTIVITY_NO_HISTORY.inv()
+        }
+    }
+
+/**
+ * [Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS]
+ */
+inline var Intent.isExcludeFromRecents
+    get() = (flags and Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+        } else {
+            flags and Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS.inv()
+        }
+    }
+
+/**
+ * [Intent.FLAG_ACTIVITY_NEW_TASK]
+ */
+inline var Intent.isNewTask
+    get() = (flags and Intent.FLAG_ACTIVITY_NEW_TASK) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_NEW_TASK
+        } else {
+            flags and Intent.FLAG_ACTIVITY_NEW_TASK.inv()
+        }
+    }
+
+/**
+ * [Intent.FLAG_ACTIVITY_MULTIPLE_TASK]
+ */
+inline var Intent.isMultipleTask
+    get() = (flags and Intent.FLAG_ACTIVITY_MULTIPLE_TASK) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+        } else {
+            flags and Intent.FLAG_ACTIVITY_MULTIPLE_TASK.inv()
+        }
+    }
+
+/**
+ * [Intent.FLAG_ACTIVITY_SINGLE_TOP]
+ */
+inline var Intent.isSingleTop
+    get() = (flags and Intent.FLAG_ACTIVITY_SINGLE_TOP) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        } else {
+            flags and Intent.FLAG_ACTIVITY_SINGLE_TOP.inv()
+        }
+    }
+
+inline var Intent.isSingleTask
+    get() = (flags and FLAG_ACTIVITY_SINGLE_TASK) != 0
+    set(value) {
+        flags = if (value) {
+            flags or FLAG_ACTIVITY_SINGLE_TASK
+        } else {
+            flags and FLAG_ACTIVITY_SINGLE_TASK.inv()
+        }
+    }
+
+/**
+ * [Intent.FLAG_ACTIVITY_CLEAR_TOP]
+ */
+inline var Intent.isClearTop
+    get() = (flags and Intent.FLAG_ACTIVITY_CLEAR_TOP) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        } else {
+            flags and Intent.FLAG_ACTIVITY_CLEAR_TOP.inv()
+        }
+    }
+
+/**
+ * [Intent.FLAG_ACTIVITY_CLEAR_TASK]
+ */
+inline var Intent.isClearTask
+    get() = (flags and Intent.FLAG_ACTIVITY_CLEAR_TASK) != 0
+    set(value) {
+        flags = if (value) {
+            flags or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        } else {
+            flags and Intent.FLAG_ACTIVITY_CLEAR_TASK.inv()
+        }
+    }
+
 /**
  * 栈顶复用
  * 回调 onNewIntent()

@@ -3,6 +3,7 @@ package com.example.thinking.util
 import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Process
 import android.util.Log
@@ -20,6 +21,32 @@ class ContextInitializer : Initializer<ContextInitializer> {
         val context: Context get() = ref.get()?.context ?: throw ContextNotInitializedException()
 
         val contextOrNull get() = ref.get()?.contextOrNull
+
+        val lightContext
+            get() = run {
+                val config = Configuration(context.resources.configuration)
+                val nightMode = config.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                if (nightMode != Configuration.UI_MODE_NIGHT_NO) {
+                    val uiMode = config.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()
+                    config.uiMode = uiMode or Configuration.UI_MODE_NIGHT_NO
+                    context.createConfigurationContext(config)
+                } else {
+                    context
+                }
+            }
+
+        val darkContext
+            get() = run {
+                val config = Configuration(context.resources.configuration)
+                val nightMode = config.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                if (nightMode != Configuration.UI_MODE_NIGHT_YES) {
+                    val uiMode = config.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()
+                    config.uiMode = uiMode or Configuration.UI_MODE_NIGHT_YES
+                    context.createConfigurationContext(config)
+                } else {
+                    context
+                }
+            }
 
         @JvmStatic
         fun init(context: Context): ContextInitializer {

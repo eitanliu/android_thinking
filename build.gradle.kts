@@ -29,7 +29,16 @@ allprojects {
             force(libs.androidx.lifecycle.viewmodel.ktx)
             force(libs.androidx.lifecycle.viewmodel.compose)
             force(libs.androidx.lifecycle.viewmodel.savedstate)
+            forceBundle(libs.bundles.androidx.navigation3)
         }
+    }
+}
+
+fun ResolutionStrategy.forceBundle(
+    dependencies: Provider<ExternalModuleDependencyBundle>
+) {
+    for (dependency in dependencies.get()) {
+        force(dependency)
     }
 }
 

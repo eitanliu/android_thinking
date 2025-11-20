@@ -537,14 +537,14 @@ yo,NG,Yoruba (Nigeria),Èdè Yorùbá (Nàìjíríà)
 yrl,BR,Nheengatu (Brazil),nheẽgatu (Brasiu)
 yrl,CO,Nheengatu (Colombia),ñengatú (Kurũbiya)
 yrl,VE,Nheengatu (Venezuela),ñengatú (Wenesuera)
-yue-Hans,CN,"Cantonese (Simplified), (China)",粤语 (简体，中华人民共和国)
-yue-Hant,HK,"Cantonese (Traditional), (Hong Kong SAR China)",粵語 (繁體，中華人民共和國香港特別行政區)
+yue-Hans,CN,"Cantonese (Simplified), (China)",粤语 (简体，中国)
+yue-Hant,HK,"Cantonese (Traditional), (Hong Kong SAR China)",粵語 (繁體，中国香港)
 zgh,MA,Standard Moroccan Tamazight (Morocco),ⵜⴰⵎⴰⵣⵉⵖⵜ (ⵍⵎⵖⵔⵉⴱ)
 zh-Hans,CN,"Chinese (Simplified), (China)",中文（简体，中国）
-zh-Hans,HK,"Chinese (Simplified), (Hong Kong SAR China)",中文（简体，中国香港特别行政区）
-zh-Hans,MO,"Chinese (Simplified), (Macao SAR China)",中文（简体，中国澳门特别行政区）
+zh-Hans,HK,"Chinese (Simplified), (Hong Kong SAR China)",中文（简体，中国香港）
+zh-Hans,MO,"Chinese (Simplified), (Macao SAR China)",中文（简体，中国澳门）
 zh-Hans,SG,"Chinese (Simplified), (Singapore)",中文（简体，新加坡）
-zh-Hant,HK,"Chinese (Traditional), (Hong Kong SAR China)",中文（繁體字，中國香港特別行政區）
-zh-Hant,MO,"Chinese (Traditional), (Macao SAR China)",中文（繁體字，中國澳門特別行政區）
+zh-Hant,HK,"Chinese (Traditional), (Hong Kong SAR China)",中文（繁體字，中國香港）
+zh-Hant,MO,"Chinese (Traditional), (Macao SAR China)",中文（繁體字，中國澳門）
 zh-Hant,TW,"Chinese (Traditional), (Taiwan)",中文（繁體，台灣）
 zu,ZA,Zulu (South Africa),isiZulu (iNingizimu Afrika)

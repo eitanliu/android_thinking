@@ -1,13 +1,13 @@
 [versions]
 agp = "8.13.0"
 jvm = "11"
-android-compileSdk = "35"
-android-targetSdk = "35"
+android-compileSdk = "36"
+android-targetSdk = "36"
 android-minSdk = "26"
 androidx-annotation = "1.9.1"
 androidx-annotation-experimental = "1.5.1"
 androidx-arch = "2.2.0"
-androidx-activity = "1.11.0"
+androidx-activity = "1.12.0"
 androidx-appcompat = "1.7.1"
 androidx-constraintlayout = "2.2.1"
 androidx-constraintlayout-core = "1.1.1"
@@ -17,30 +17,30 @@ androidx-fragment = "1.8.9"
 androidx-collection = "1.5.0"
 androidx-core = "1.17.0"
 androidx-credentials = "1.5.0"
-androidx-datastore = "1.1.7"
+androidx-datastore = "1.2.0"
 androidx-espresso = "3.7.0"
-androidx-lifecycle = "2.9.4"
-androidx-navigation = "2.9.5"
-androidx-navigation3 = "1.0.0-alpha11"
+androidx-lifecycle = "2.10.0"
+androidx-navigation = "2.9.6"
+androidx-navigation3 = "1.0.0"
 androidx-paging = "3.3.6"
 androidx-palette = "1.0.0"
 androidx-preference = "1.2.1"
-androidx-room = "2.8.2"
-androidx-savedstate = "1.3.3"
-androidx-sqlite = "2.6.1"
+androidx-room = "2.8.4"
+androidx-savedstate = "1.4.0"
+androidx-sqlite = "2.6.2"
 androidx-startup = "1.2.0"
-androidx-work = "2.10.5"
+androidx-work = "2.11.0"
 androidx-media3 = "1.8.0"
 androidx-test-ext = "1.3.0"
 androidx-concurrent-futures = "1.3.0"
-compose-bom = "2025.09.00"
-compose-hot-reload = "1.0.0-rc02"
-compose-multiplatform = "1.9.1"
+compose-bom = "2025.10.00"
+compose-hot-reload = "1.0.0-rc04"
+compose-multiplatform = "1.9.3"
 compose-navigation = "2.9.0-beta03"
 desugar_jdk_libs = "2.1.5"
 junit = "4.13.2"
-kotlin = "2.2.10"
-kotlin-ksp = "2.2.10-2.0.2"
+kotlin = "2.2.21"
+kotlin-ksp = "2.2.21-2.0.4"
 kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.9.0"
 kotlinx-io = "0.8.0"
@@ -53,8 +53,8 @@ play-asset = "2.3.0"
 play-feature = "2.1.0"
 play-review = "2.0.2"
 play-update = "2.1.0"
-firebase = "33.16.0"
-billing = "8.0.0"
+firebase = "34.6.0"
+billing = "8.1.0"
 mlkit-genai = "1.0.0-beta1"
 mlkit-text-recognition = "16.0.1"
 
@@ -195,6 +195,7 @@ androidx-sqlite-testing = { module = "androidx.sqlite:sqlite-testing", version.r
 # https://developer.android.com/develop/ui/compose/bom/bom-mapping
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version = "1.7.8" }
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
@@ -257,42 +258,42 @@ play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref =
 play-update = { module = "com.google.android.play:app-update", version.ref = "play-update" }
 play-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "play-update" }
 # https://developer.android.com/google/play/integrity
-play-integrity = "com.google.android.play:integrity:1.4.0"
+play-integrity = "com.google.android.play:integrity:1.5.0"
 
 # gms https://developers.google.com/android/guides/setup#list-dependencies
-play-ads = "com.google.android.gms:play-services-ads:24.5.0"
+play-ads = "com.google.android.gms:play-services-ads:24.7.0"
 play-ads-identifier = "com.google.android.gms:play-services-ads-identifier:18.2.0"
-play-ads-lite = "com.google.android.gms:play-services-ads-lite:24.3.0"
+play-ads-lite = "com.google.android.gms:play-services-ads-lite:24.6.0"
 play-afs-native = "com.google.android.gms:play-services-afs-native:19.1.0"
 play-analytics = "com.google.android.gms:play-services-analytics:18.1.1"  # Deprecated
 play-appindex = "com.google.android.gms:play-services-appindex:16.2.0"
 play-appsearch = "com.google.android.gms:play-services-appsearch:16.0.1"
 play-appset = "com.google.android.gms:play-services-appset:16.1.0"
 play-auth = "com.google.android.gms:play-services-auth:21.4.0"
-play-auth-api-phone = "com.google.android.gms:play-services-auth-api-phone:18.2.0"
+play-auth-api-phone = "com.google.android.gms:play-services-auth-api-phone:18.3.0"
 play-auth-blockstore = "com.google.android.gms:play-services-auth-blockstore:16.4.0"
 play-awareness = "com.google.android.gms:play-services-awareness:19.1.0"
-play-base = "com.google.android.gms:play-services-base:18.7.2"
-play-base-testing = "com.google.android.gms:play-services-base-testing:16.1.0"
-play-basement = "com.google.android.gms:play-services-basement:18.7.1"
-play-tasks = "com.google.android.gms:play-services-tasks:18.3.2"
-play-camera-low-light-boost = "com.google.android.gms:play-services-camera-low-light-boost:16.0.1-beta04"
-play-cast = "com.google.android.gms:play-services-cast:22.1.0"
-play-cast-framework = "com.google.android.gms:play-services-cast-framework:22.1.0"
-play-cronet = "com.google.android.gms:play-services-cronet:18.1.0"
+play-base = "com.google.android.gms:play-services-base:18.9.0"
+play-base-testing = "com.google.android.gms:play-services-base-testing:16.2.0"
+play-basement = "com.google.android.gms:play-services-basement:18.9.0"
+play-tasks = "com.google.android.gms:play-services-tasks:18.4.0"
+play-camera-low-light-boost = "com.google.android.gms:play-services-camera-low-light-boost:16.0.1-beta06"
+play-cast = "com.google.android.gms:play-services-cast:22.2.0"
+play-cast-framework = "com.google.android.gms:play-services-cast-framework:22.2.0"
+play-cronet = "com.google.android.gms:play-services-cronet:18.1.1"
 play-dtdi = "com.google.android.gms:play-services-dtdi:16.0.0-beta02"
 play-fitness = "com.google.android.gms:play-services-fitness:21.3.0"
 play-games-v2 = "com.google.android.gms:play-services-games-v2:21.0.0"
 play-games-v2-native-c = "com.google.android.gms:play-services-games-v2-native-c:17.0.0-beta1"
-play-games = "com.google.android.gms:play-services-games:23.2.0"
+play-games = "com.google.android.gms:play-services-games:24.0.0"
 play-home = "com.google.android.gms:play-services-home:16.0.0"
 play-instantapps = "com.google.android.gms:play-services-instantapps:18.2.0"  # Deprecated
 play-location = "com.google.android.gms:play-services-location:21.3.0"
 play-maps = "com.google.android.gms:play-services-maps:19.2.0"
-play-maps3d = "com.google.android.gms:play-services-maps3d:0.0.2"
+play-maps3d = "com.google.android.gms:play-services-maps3d:0.1.0"
 play-nearby = "com.google.android.gms:play-services-nearby:19.3.0"
 # https://developers.google.com/android/guides/opensource
-play-oss-licenses = "com.google.android.gms:play-services-oss-licenses:17.2.2"
+play-oss-licenses = "com.google.android.gms:play-services-oss-licenses:17.3.0"
 play-pal = "com.google.android.gms:play-services-pal:22.1.0"
 play-password-complexity = "com.google.android.gms:play-services-password-complexity:18.1.0"
 play-pay = "com.google.android.gms:play-services-pay:16.5.0"
@@ -305,14 +306,14 @@ play-tflite-support = "com.google.android.gms:play-services-tflite-support:16.4.
 play-threadnetwork = "com.google.android.gms:play-services-threadnetwork:16.3.0"
 play-time = "com.google.android.gms:play-services-time:16.0.1"
 play-vision = "com.google.android.gms:play-services-vision:20.1.3"
-play-wallet = "com.google.android.gms:play-services-wallet:19.4.0"
+play-wallet = "com.google.android.gms:play-services-wallet:19.5.0"
 # https://developer.android.com/training/wearables/data-layer
 play-wearable = "com.google.android.gms:play-services-wearable:19.0.0"
 
 # ml-kit https://developers.google.com/ml-kit/release-notes
 play-code-scanner = "com.google.android.gms:play-services-code-scanner:16.1.0"
 play-mlkit-barcode-scanning = "com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1"
-play-mlkit-document-scanner = "com.google.android.gms:play-services-mlkit-document-scanner:16.0.0-beta1"
+play-mlkit-document-scanner = "com.google.android.gms:play-services-mlkit-document-scanner:16.0.0"
 play-mlkit-face-detection = "com.google.android.gms:play-services-mlkit-face-detection:17.1.0"
 play-mlkit-image-labeling = "com.google.android.gms:play-services-mlkit-image-labeling:16.0.8"
 play-mlkit-image-labeling-custom = "com.google.android.gms:play-services-mlkit-image-labeling-custom:16.0.0-beta5"
@@ -356,7 +357,7 @@ mlkit-entity-extraction = "com.google.mlkit:entity-extraction:16.0.0-beta6"
 google-billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
 google-billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
 # admob privacy https://developers.google.com/admob/android/privacy
-google-ump = "com.google.android.ump:user-messaging-platform:3.2.0"
+google-ump = "com.google.android.ump:user-messaging-platform:4.0.0"
 
 # firebase https://firebase.google.com/support/release-notes/android
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
@@ -378,6 +379,12 @@ eitanliu-cleaner-compat = { module = "com.github.eitanliu.cleaner:compat", versi
 # https://github.com/square/leakcanary
 # https://github.com/amitshekhariitbhu/Android-Debug-Database
 
+[bundles]
+androidx-navigation3 = [
+    "androidx-navigation3-runtime",
+    "androidx-navigation3-ui",
+]
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
@@ -397,3 +404,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

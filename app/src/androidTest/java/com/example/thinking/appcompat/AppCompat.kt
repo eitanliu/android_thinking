@@ -34,6 +34,6 @@ package com.example.thinking.appcompat
  * type   [androidx.appcompat.widget.ContentFrameLayout]
  */
 fun setContentView() {
-    com.example.thinking.R.style.Theme_Thinking
+    com.example.thinking.R.style.AppTheme
 }
 

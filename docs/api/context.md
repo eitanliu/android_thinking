@@ -8,7 +8,8 @@
 [DisplayManager](https://developer.android.com/reference/android/hardware/display/DisplayManager)  
 
 ### Locale
-[Locale](https://developer.android.com/reference/java/util/Locale)
+
+[Locale](https://developer.android.com/reference/java/util/Locale)  
 
 ### Reference
 

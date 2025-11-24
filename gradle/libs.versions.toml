@@ -409,6 +409,10 @@ androidx-navigation3 = [
     "androidx-navigation3-ui",
 ]
 
+# Repository
+# https://maven.pkg.jetbrains.space/public/p/compose/dev/
+# https://maven.pkg.jetbrains.space/public/p/ktor/eap/
+# https://maven.pkg.jetbrains.space/public/p/krpc/grpc
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
@@ -422,6 +426,7 @@ android-asset-pack = { id = "com.android.asset-pack", version.ref = "agp" }
 android-multiplatform = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 compose-hot-reload = { id = "org.jetbrains.compose.hot-reload", version.ref = "compose-hot-reload" }
 # https://mvnrepository.com/artifact/org.jetbrains.compose/org.jetbrains.compose.gradle.plugin
+# https://maven.pkg.jetbrains.space/public/p/compose/dev/org/jetbrains/compose/org.jetbrains.compose.gradle.plugin/
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 # https://kotlinlang.org/docs/gradle-configure-project.html
